@@ -1,0 +1,17 @@
+accommodations:
+  - name: Hotel Cercano
+    distance: 550 m
+    address: Calle Arriba, 15. Bajo izq.
+    map: https://goo.gl/maps/1fsiUZemEN75XcL66
+    phone: 954 12 99 99
+    web: https://example.com
+    rooms: 21 (dobles, triples o cuádruples)
+    price: 65 €
+  - name: Hotel Lejano
+    distance: 3 Km
+    address: Calle Abajo, 15. Bajo izq.
+    map: https://goo.gl/maps/1fsiUZemEN75XcL66
+    phone: 954 12 99 98
+    web: https://example.net
+    rooms: 32 dobles
+    price: 165 €

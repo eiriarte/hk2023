@@ -1,5 +1,60 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+    resource: ../src/Controller/
     type: attribute
+
+root:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    methods: GET
+    defaults:
+        route: main
+        permanent: true
+        keepQueryParams: true
+        ignoreAttributes: true
+
+main:
+    path: /{_locale}
+    controller: App\Controller\MainController::main
+    methods: GET
+
+registrations:
+    path:
+        es: /{_locale}/inscripciones
+        eo: /{_locale}/alighoj
+    controller: App\Controller\RegistrationController::list
+    methods: GET
+
+new_registration:
+    path:
+        es: /{_locale}/inscripciones/nueva
+        eo: /{_locale}/alighoj/nova
+    controller: App\Controller\RegistrationController::create
+    methods: GET|POST
+
+suggestions:
+    path:
+        es: /{_locale}/sugerencias
+        eo: /{_locale}/sugestoj
+    controller: App\Controller\MainController::suggest
+    methods: GET|POST
+
+suggestion_sent:
+    path:
+        es: /{_locale}/sugerencias/recibida
+        eo: /{_locale}/sugestoj/ricevita
+    controller: App\Controller\MainController::suggestionSent
+    methods: GET
+
+program:
+    path:
+        es: /{_locale}/programa
+        eo: /{_locale}/programo
+    controller: App\Controller\MainController::program
+    methods: GET
+
+accommodation:
+    path:
+        es: /{_locale}/hospedaje
+        eo: /{_locale}/loghado
+    controller: App\Controller\MainController::accommodation
+    methods: GET

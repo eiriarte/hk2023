@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}¡Gracias!{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="row py-lg-5 text-center">
+        <div class="alert alert-success">
+            <h2 class="fw-light">{% trans %}¡Gracias!{% endtrans %}</h2>
+            <p>{% trans %}Hemos recibido tu sugerencia.{% endtrans %}</p>
+        </div>
+        <p><a href="{{ path('main') }}" class="link-primary">{% trans %}Volver a la página principal{% endtrans %}</a></p>
+    </div>
+{% endblock %}

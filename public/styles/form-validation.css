@@ -1,0 +1,4 @@
+table.table > tbody > tr > td {
+  padding: 0.5rem;
+  text-align: right;
+}   

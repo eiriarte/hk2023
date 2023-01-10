@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% trans %}Hospedaje{% endtrans %} | {{ parent() }}{% endblock %}
+{% block body %}
+    <h1 class="fw-light text-center">{% trans %}Hospedaje{% endtrans %}</h1>
+    {% for accommodation in accommodations %}
+        <div class="card bg-light shadow mt-3 mt-md-5">
+            <div class="card-body">
+                <h5 class="card-title">{{ accommodation.name|trans }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ accommodation.address|trans }} ({{ accommodation.distance|trans }})</h6>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><b>{% trans %}Número de habitaciones{% endtrans %}</b>: {{ accommodation.rooms|trans }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{% trans %}Precio{% endtrans %}</b>: {{ accommodation.price|trans }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{ accommodation.web }}" target="_blank" class="card-link link-primary text-decoration-none">
+                    <i class="bi bi-link-45deg"></i>
+                    {{ accommodation.web|trans }}
+                </a>
+                <a href="tel:{{ accommodation.phone }}" class="link-primary card-link text-decoration-none">
+                    <i class="bi bi-telephone-fill"></i>
+                    {{ accommodation.phone }}
+                </a>
+                <a href="{{ accommodation.map }}" target="_blank" class="link-primary card-link text-decoration-none">
+                    <i class="bi bi-pin-map-fill"></i>
+                    {% trans %}Mapa{% endtrans %}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

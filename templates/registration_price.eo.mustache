@@ -1,0 +1,32 @@
+<table id="price" class="table table-sm table-bordered">
+    <tr>
+        <td class="table-light">Komenca kvanto</td>
+        <td>{{ initialPrice }} €</td>
+    </tr>
+{{# memberDiscount }}
+    <tr>
+        <td class="table-light">Membro</td>
+        <td>{{ memberDiscount }} €</td>
+    </tr>
+{{/ memberDiscount }}
+{{# relativeDiscount }}
+    <tr>
+        <td class="table-light">Familiano</td>
+        <td>{{ relativeDiscount }} €</td>
+    </tr>
+{{/ relativeDiscount }}
+{{# youngDiscount }}
+    <tr>
+        <td class="table-light">≤ 30 jaroj</td>
+        <td>{{ youngDiscount }} €</td>
+    </tr>
+{{/ youngDiscount }}
+    <tr>
+        <td class="table-light">Mondonaco</td>
+        <td>{{ donation }} €</td>
+    </tr>
+    <tr class="fs-5 fw-bold">
+        <td class="table-light">Sume</td>
+        <td>{{ finalPrice }} €</td>
+    </tr>
+</table>

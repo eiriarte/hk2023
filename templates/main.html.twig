@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="py-md-5 text-center text-white home-text">
+        <h1>{% trans %}Congreso español de esperanto{% endtrans %}</h1>
+        <h2 class="fw-light">{% trans %}12-15 de octubre de 2023{% endtrans %}</h2>
+        <p class="lead">
+            {% trans %}El LXXXI Congreso Español de Esperanto se celebrará en Sevilla.{% endtrans %}
+            {% trans %}Te invitamos a venir y encontrarte con esperantohablantes de diversos países y culturas.{% endtrans %}
+            {% trans %}Ya puedes inscribirte, con un descuento por incripción temprana hasta enero de 2023.{% endtrans %}
+            {% trans %}Pronto podrás encontrar más detalles en esta misma web.{% endtrans %}
+        </p>
+        <p>
+            <a href="{{ path('suggestions') }}" class="btn btn-lg btn-outline-light my-2 me-2 shadow">{% trans %}Sugerencias{% endtrans %}</a>
+            <a href="{{ path('new_registration') }}" class="btn btn-lg btn-primary my-2 shadow">{% trans %}Inscríbete{% endtrans %}</a>
+        </p>
+    </div>
+{% endblock %}

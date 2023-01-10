@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Inscripción{% endtrans %} | {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/styles/form-validation.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <h1 class="fw-light text-center">{% trans %}Inscripción{% endtrans %}</h1>
+    {{ form_start(form) }}
+        <div class="row g-3">
+            <div class="col-sm-6">
+                {{ form_row(form.name, {'label': 'Nombre'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+            <div class="col-sm-6">
+                {{ form_row(form.surname, {'label': 'Apellidos'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+            <div class="col-sm-6">
+                {{ form_row(form.email, {'label': 'Correo electrónico'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+            <div class="col-sm-6">
+                {{ form_row(form.phoneNumber, {'label': 'Teléfono de contacto'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+            <div class="col-sm-6">
+                {{ form_row(form.country, {'label': 'Nacionalidad'|trans, 'attr': {'class': 'form-select'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+            <div class="col-sm-6">
+                {{ form_row(form.city, {'label': 'Ciudad'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+            <div class="col-sm-6">
+                {{ form_row(form.idCard, {'label': 'NIF/Pasaporte'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row gx-4">
+            <div class="col-sm">
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-12">
+                        {{ form_row(form.member, {'label': 'Miembro de ASE/HEF'|trans}) }}
+                    </div>
+                    <div class="col-sm-12">
+                        {{ form_row(form.relative, {'label': 'Familiar de miembro de ASE/HEF'|trans}) }}
+                    </div>
+                    <div class="col-sm-12">
+                        {{ form_row(form.age, {'label': 'Edad'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
+                    </div>
+                    <div class="col-sm-12">
+                        {{ form_row(form.donation, {'label': 'Donación al congreso (voluntaria)'|trans, 'label_attr': {'class': 'form-label'}}) }}
+                    </div>
+                    <div class="col-sm-12">
+                        {{ form_row(form.paymentSystem, {'label': 'Medio de pago'|trans, 'attr': {'class': 'form-select'}, 'label_attr': {'class': 'form-label'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm" id="price-table">
+            </div>
+        </div>
+        <hr class="my-4">
+        {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
+        {{ form_widget(form.consent, {
+             'label': 'Autorizo a la Asociación Sevillana de Esperanto el tratamiento de los datos contenidos en este formulario en los términos que se indican a continuación:'|trans,
+             'label_attr': {'class': 'form-label'}
+           })
+        }}
+        <p class="ms-4 text-muted">
+            {% if locale == 'eo' %}
+            <small>
+                Observante la eŭropan regularon pri datum-protektado RGPD (UE 2016/679), la leĝon 34/2002 pri
+                Inform-sociaj Servoj kaj Elektronika Komerco kaj la Konstitucia Leĝo pri Protektado de Personaj
+                Datumoj, ni vin informas, ke viaj personaj datumoj estos traktataj fare de la Sevila Esperanto-Asocio,
+                celante la aranĝon kaj organizadon de la 81-a Hispana Esperanto-Kongreso. Tiuj datumoj konserviĝos ĝis
+                la fino de tiu kongreso. Vi povos uzi viajn rajtojn pri aliro, modifo, forigo, kontraŭstraro, limigo
+                de la traktado kaj porteblo de tiuj datumoj per sendado de mesaĝo al admin@esperantosevilla.org.
+            </small>
+            {% else %}
+            <small>
+                En cumplimiento de la normativa europea de protección de datos RGPD (UE 2016/679), de la Ley 34/2002
+                de Servicios de la Sociedad de la Información y de Comercio Electrónico, así como de la Ley Orgánica
+                de Protección de Datos de Carácter Personal, le informamos de que sus datos personales serán objeto
+                de tratamiento por parte de la Asociación Sevillana de Esperanto, cuya finalidad es la gestión y
+                organización del LXXXI Congreso Español de Esperanto. Los datos proporcionados se conservarán hasta la
+                finalización de dicho congreso. Ud. podrá ejercer sus derechos de acceso, rectificación, supresión,
+                oposición, limitación del tratamiento y portabilidad escribiendo a admin@esperantosevilla.org.
+            </small>
+            {% endif %}
+        </p>
+        <hr class="my-4">
+        {{ form_row(form.submit, { 'label': 'Enviar la suscripción'|trans, 'attr': {'class': 'btn-primary btn-lg w-100'} }) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/scripts/form-validation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.2/hogan.min.js" integrity="sha512-F6j8lc1UBrmZHqUGreg4gNVVMCehTbf/LU0s/nnsQJYVeFSdpci+fcL48gsTd1Fbf08sD/kL+is2QiEssvJ70g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/scripts/registration_price.{{ locale }}.mustache.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var isMember = document.getElementById('registration_member');
+            var isRelative = document.getElementById('registration_relative');
+            var age = document.getElementById('registration_age');
+            var donation = document.getElementById('registration_donation');
+            var priceTable = document.getElementById('price-table');
+            var setPrice = function() {
+                var costData = {
+                    initialPrice: 70,
+                    memberDiscount: isMember.checked ? -10 : 0,
+                    relativeDiscount: isRelative.checked ? -5 : 0,
+                    youngDiscount: parseInt(age.value) <= 30 ? -5 : 0,
+                    donation: Math.abs(parseInt(donation.value)) || 0,
+                };
+                costData.finalPrice =
+                    costData.initialPrice +
+                    costData.memberDiscount +
+                    costData.relativeDiscount +
+                    costData.youngDiscount +
+                    costData.donation;
+                isRelative.disabled = isMember.checked;
+                isMember.disabled = isRelative.checked;
+                var table = templates["registration_price"].render(costData);
+                priceTable.innerHTML = table;
+                console.log(table);
+            }
+            var exclusive = function(e) {
+                if (e.target.id === 'registration_member' && e.target.checked) {
+                    isRelative.checked = false;
+                } else if (e.target.id === 'registration_relative' && e.target.checked) {
+                    isMember.checked = false;
+                }
+            }
+            setPrice();
+            isMember.addEventListener('change', exclusive);
+            isMember.addEventListener('change', setPrice);
+            isRelative.addEventListener('change', exclusive);
+            isRelative.addEventListener('change', setPrice);
+            age.addEventListener('input', setPrice);
+            donation.addEventListener('input', setPrice);
+        });
+    </script>
+{% endblock %}

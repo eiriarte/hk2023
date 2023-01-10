@@ -1,0 +1,20 @@
+program:
+  - date: Sábado, 24 de septiembre
+    schedule:
+      - time: 9:00-10:00
+        event: Inauguración
+        place: Hotel
+      - time: 10:00-10:15
+        event: Foto en común
+        place: Plaza Nueva
+      - time: 10:00-11:30
+        event: Clase de esperanto
+        place: Facultad
+  - date: Domingo, 25 de septiembre
+    schedule:
+      - time: 10:00-11:00
+        event: Clase de esperanto
+        place: Facultad
+      - time: 12:00-14:00
+        event: Concierto de JoMo
+        place: Alameda

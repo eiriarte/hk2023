@@ -1,19 +1,90 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+{% set route_name = app.request.attributes.get('_route') %}
+{% set locale = app.request.getLocale() %}
+<html lang="{{ locale }}">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if route_name == 'new_registration' %}
+        <meta name="robots" content="noindex">
+        {% endif %}
+        <title>{% block title %}Hispana Kongreso 2023{% endblock %}</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link href="/styles/navbar-top-fixed.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&display=swap" rel="stylesheet">
+            <style>
+                html {
+                    background-color: #567085;
+                    background: url(/images/metropolblurred.jpg) no-repeat center center fixed;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    background-size: cover;
+                }
+                body {
+                    background-color: transparent;
+                }
+                .home-text {
+                    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+                }
+                h1, h2, h3 {
+                    font-family: 'Alegreya', serif;
+                }
+            </style>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            {% include 'navbar.html.twig' %}
+        </header>
+        <main class="pb-4">
+            <section class="py-5 container{{ route_name != 'main' ? ' bg-white' }}">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% block footer %}
+        <footer class="fixed-bottom{{ route_name == 'main' ? ' text-white' : ' bg-dark' }}">
+            <nav>
+                <ul class="nav justify-content-center fs-4">
+                    <li class="nav-item">
+                        <a href="https://esperanto.es/" target="_blank" class="nav-link text-light">
+                            <i class="bi bi-house-fill" role="img" aria-label="{{ 'Federación Española de Esperanto'|trans }}"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://twitter.com/esperantoes" target="_blank" class="nav-link text-light">
+                            <i class="bi bi-twitter" role="img" aria-label="Twitter"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.facebook.com/esperanto.es" target="_blank" class="nav-link text-light">
+                            <i class="bi bi-facebook" role="img" aria-label="Facebook"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.youtube.com/esesperanto" target="_blank" class="nav-link text-light">
+                            <i class="bi bi-youtube" role="img" aria-label="Youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+        {% endblock %}
+        {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        {% endblock %}
     </body>
 </html>

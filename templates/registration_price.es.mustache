@@ -1,0 +1,32 @@
+<table id="price" class="table table-sm table-bordered">
+    <tr>
+        <td class="table-light">Subtotal</td>
+        <td>{{ initialPrice }} €</td>
+    </tr>
+{{# memberDiscount }}
+    <tr>
+        <td class="table-light">Miembro</td>
+        <td>{{ memberDiscount }} €</td>
+    </tr>
+{{/ memberDiscount }}
+{{# relativeDiscount }}
+    <tr>
+        <td class="table-light">Familiar</td>
+        <td>{{ relativeDiscount }} €</td>
+    </tr>
+{{/ relativeDiscount }}
+{{# youngDiscount }}
+    <tr>
+        <td class="table-light">≤ 30 años</td>
+        <td>{{ youngDiscount }} €</td>
+    </tr>
+{{/ youngDiscount }}
+    <tr>
+        <td class="table-light">Donación</td>
+        <td>{{ donation }} €</td>
+    </tr>
+    <tr class="fs-5 fw-bold">
+        <td class="table-light">Total</td>
+        <td>{{ finalPrice }} €</td>
+    </tr>
+</table>
