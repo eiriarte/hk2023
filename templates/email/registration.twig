@@ -1,0 +1,45 @@
+{% apply inky_to_html|inline_css(source('@assets/foundation.css')) %}
+<spacer size="16"></spacer>
+<container class="header">
+    <row>
+        <columns>
+            <center>
+                <img src="{{ email.image('@assets/logo_hef.png') }}" alt="Logo HEF">
+            </center>
+        </columns>
+    </row>
+</container>
+<container class="body-drip">
+    <spacer size="16"></spacer>
+    <row>
+        <columns>
+            <h2>{% trans %}Gracias por tu inscripci&oacute;n{% endtrans %}</h2>
+            <p>{% trans %}Hola{% endtrans %}, {{ name }}.</p>
+            {% if locale == 'es' %}
+                <p>Hemos recibido correctamente tu solicitud de inscripci&oacute;n al <strong>LXXXI Congreso Espa&ntilde;ol de Esperanto</strong>, que tendr&aacute; lugar del <strong>12 al 15 de octubre de 2023</strong> en <strong>Sevilla</strong>. A continuaci&oacute;n te detallamos los datos de pago que nos has proporcionado:</p>
+            {% else %}
+                <p>Ni kontentige ricevis vian ali&#285;peton al la <strong>81-a Hispana Esperanto-Kongreso</strong>, kiu okazi&#285;os de <strong>12-a &#285;is 15-a de oktobro 2023</strong> en <strong>Sevilo</strong>. Sube ni detaligas la datumojn pri pago seditajn de vi:</p>
+            {% endif %}
+            <spacer size="16"></spacer>
+            <callout class="secondary">
+                <row>
+                    <columns>
+                        <table class="spaced-table">
+                            <tr><td><p class="text-right"><b>{% trans %}Precio{% endtrans %}&nbsp;</b></p></td><td>{{ price }} &euro; ({{ priceText | raw }})</td></tr>
+                            <tr><td><p class="text-right"><b>{% trans %}Descuento{% endtrans %}&nbsp;</b></p></td><td>-{{ discount }} &euro; ({{ discountText | raw }})</td></tr>
+                            <tr><td><p class="text-right"><b>{% trans %}Donaci&oacute;n{% endtrans %}&nbsp;</b></p></td><td>{{ donation }} &euro;</td></tr>
+                            <tr><td><p class="text-right"><b>{% trans %}Total a abonar{% endtrans %}&nbsp;</b></p></td><td><b>{{ total }} &euro;</b></td></tr>
+                            <tr><td><p class="text-right"><b>{% trans %}Forma de pago{% endtrans %}&nbsp;</b></p></td><td>{{ paymentSystem | raw }}</td></tr>
+                        </table>
+                    </columns>
+                </row>
+            </callout>
+            <spacer size="16"></spacer>
+            <p>{% trans %}Recibir&aacute;s otro correo con la confirmaci&oacute;n de tu inscripci&oacute;n tan pronto recibamos el pago{% endtrans %}.</p>
+            <spacer size="16"></spacer>
+            <p>{% trans %}Hasta pronto{% endtrans %},</p>
+            <p>{% trans %}Comit&eacute; organizador{% endtrans %}</p>
+        </columns>
+    </row>
+</container>
+{% endapply %}

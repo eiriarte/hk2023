@@ -3,6 +3,9 @@ twig:
     form_themes: ['bootstrap_4_layout.html.twig']
     cache: false
 
+    paths:
+        '%kernel.project_dir%/assets': assets
+
 when@test:
     twig:
         strict_variables: true

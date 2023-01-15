@@ -15,7 +15,7 @@ use Symfony\Component\Yaml\Yaml;
 class MainController extends AbstractController
 {
     private const FROM_EMAIL = 'admin@esperantosevilla.org';
-    private const EMAIL = 'kongreso@esperanto.es';
+    private const INFO_EMAIL = 'kongreso@esperanto.es';
 
     public function main(): Response
     {
@@ -36,7 +36,7 @@ class MainController extends AbstractController
             $suggestionRepository->add($suggestion, true);
             $mail = (new Email())
                 ->from(self::FROM_EMAIL)
-                ->to(self::EMAIL)
+                ->to(self::INFO_EMAIL)
                 ->replyTo($suggestion->getEmail())
                 ->bcc('eiriarte@gmail.com')
                 ->subject('Hispana Esperanto-Kongreso: Sugerencia de ' . $suggestion->getName())
