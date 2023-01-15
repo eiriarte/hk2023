@@ -104,24 +104,30 @@
             var donation = document.getElementById('registration_donation');
             var priceTable = document.getElementById('price-table');
             var setPrice = function() {
+                var discount = 0;
+                if (isMember.checked) {
+                    discount = 10;
+                    if (parseInt(age.value) < 31) {
+                        discount = 20;
+                    } else if (isRelative.checked) {
+                        discount = 20;
+                    }
+                } else if (parseInt(age.value) < 31) {
+                    discount = 15;
+                } else if (isRelative.checked) {
+                    discount = 15;
+                }
                 var costData = {
                     initialPrice: 70,
-                    memberDiscount: isMember.checked ? -10 : 0,
-                    relativeDiscount: isRelative.checked ? -5 : 0,
-                    youngDiscount: parseInt(age.value) <= 30 ? -5 : 0,
+                    discount: discount,
                     donation: Math.abs(parseInt(donation.value)) || 0,
                 };
                 costData.finalPrice =
                     costData.initialPrice +
-                    costData.memberDiscount +
-                    costData.relativeDiscount +
-                    costData.youngDiscount +
-                    costData.donation;
-                isRelative.disabled = isMember.checked;
-                isMember.disabled = isRelative.checked;
+                    costData.donation -
+                    costData.discount;
                 var table = templates["registration_price"].render(costData);
                 priceTable.innerHTML = table;
-                console.log(table);
             }
             var exclusive = function(e) {
                 if (e.target.id === 'registration_member' && e.target.checked) {
@@ -131,9 +137,7 @@
                 }
             }
             setPrice();
-            isMember.addEventListener('change', exclusive);
             isMember.addEventListener('change', setPrice);
-            isRelative.addEventListener('change', exclusive);
             isRelative.addEventListener('change', setPrice);
             age.addEventListener('input', setPrice);
             donation.addEventListener('input', setPrice);
