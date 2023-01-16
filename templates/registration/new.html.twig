@@ -63,7 +63,7 @@
             <strong>Paypal</strong>: kasisto@esperantosevilla.org ({% trans %}Seleccionando «Enviar a un amigo»{% endtrans %})
         </div>
         {% if date() < date('2023-05-01') %}
-        <div class="alert alert-warning"><strong>{% trans %}Nota{% endtrans %}</strong>: {% trans %}El próximo 1 de mayo, el precio de la inscripción subirá a 80 €{% endtrans %}.</div>
+        <div class="alert alert-warning"><strong>{% trans %}Nota{% endtrans %}</strong>: {% trans %}El próximo 1 de mayo, el precio base de la inscripción subirá a 80 €{% endtrans %}.</div>
         {% endif %}
         <hr class="my-4">
         {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
