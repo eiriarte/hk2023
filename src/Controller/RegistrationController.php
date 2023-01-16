@@ -62,7 +62,7 @@ class RegistrationController extends AbstractController
     private function sendMail(MailerInterface $mailer, Registration $registration, TranslatorInterface $translator, string $locale) {
         $price = 70;
         $discount = 0;
-        $donation = 0;
+        $donation = $registration->getDonation() ?? 0;
         $priceText = $translator->trans('hasta abril');
         $discountText = '';
         if ((int)date('m') > 5) {
@@ -84,7 +84,7 @@ class RegistrationController extends AbstractController
             $discountText = $translator->trans('joven');
         } elseif ($registration->isRelative()) {
             $discount = 15;
-            $discountText = $translator->trans('familiar acompantildeñante');
+            $discountText = $translator->trans('familiar acompa&ntilde;ante');
         }
         $total = $price + $donation - $discount;
         switch ($registration->getPaymentSystem()) {
