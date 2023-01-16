@@ -57,6 +57,14 @@
             <div class="col-sm" id="price-table">
             </div>
         </div>
+        <div class="alert alert-info">
+            <h4 class="alert-heading">{% trans %}Medios de pago{% endtrans %}</h4>
+            <strong>{% trans %}Transferencia{% endtrans %}</strong>: IBAN ES04 0182 0404 1402 0158 5771<br/>
+            <strong>Paypal</strong>: kasisto@esperantosevilla.org ({% trans %}Seleccionando «Enviar a un amigo»{% endtrans %})
+        </div>
+        {% if date() < date('2023-05-01') %}
+        <div class="alert alert-warning"><strong>{% trans %}Nota{% endtrans %}</strong>: {% trans %}El próximo 1 de mayo, el precio de la inscripción subirá a 80 €{% endtrans %}.</div>
+        {% endif %}
         <hr class="my-4">
         {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
         {{ form_widget(form.consent, {
@@ -118,7 +126,11 @@
                     discount = 15;
                 }
                 var costData = {
+                  {% if date() < date('2023-05-01') %}
                     initialPrice: 70,
+                  {% else %}
+                    initialPrice: 80,
+                  {% endif %}
                     discount: discount,
                     donation: Math.abs(parseInt(donation.value)) || 0,
                 };
