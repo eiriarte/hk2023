@@ -27,6 +27,7 @@ class RegistrationController extends AbstractController
         MailerInterface $mailer,
     ): Response {
         $registration = new Registration();
+        $registration->setDate(new \DateTime('now'));
         $form = $this->createForm(RegistrationType::class, $registration);
         $form->handleRequest($request);
 

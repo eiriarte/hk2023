@@ -65,6 +65,12 @@ class Registration
     #[Assert\IsTrue(message: 'Es necesario autorizar expresamente el tratamiento para formalizar el registro.')]
     private ?bool $consent = null;
 
+    #[ORM\Column]
+    private ?bool $paid = false;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -234,6 +240,30 @@ class Registration
     public function setConsent(bool $consent): self
     {
         $this->consent = $consent;
+
+        return $this;
+    }
+
+    public function isPaid(): ?bool
+    {
+        return $this->paid;
+    }
+
+    public function setPaid(bool $paid): self
+    {
+        $this->paid = $paid;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
