@@ -27,7 +27,7 @@ registrations:
 admin_list:
     path:
         es: /{_locale}/listado
-        eo: /{_locale}/listo
+        eo: /{_locale}/listo83360f39874db57b33d4ad2cfe8a43f924e026e0cc09ae803ffd39df7e07d8c8
     controller: App\Controller\RegistrationController::adminList
     methods: GET
 
