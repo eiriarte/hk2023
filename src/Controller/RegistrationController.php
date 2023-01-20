@@ -60,6 +60,13 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+    public function adminList(RegistrationRepository $registrationRepository): Response
+    {
+        return $this->render('registration/admin_list.html.twig', [
+            'registrations' => $registrationRepository->findAll(),
+        ]);
+    }
+
     private function sendMail(MailerInterface $mailer, Registration $registration, TranslatorInterface $translator, string $locale) {
         $price = 70;
         $discount = 0;

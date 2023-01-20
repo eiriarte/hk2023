@@ -24,6 +24,13 @@ registrations:
     controller: App\Controller\RegistrationController::list
     methods: GET
 
+admin_list:
+    path:
+        es: /{_locale}/listado
+        eo: /{_locale}/listo
+    controller: App\Controller\RegistrationController::adminList
+    methods: GET
+
 new_registration:
     path:
         es: /{_locale}/inscripciones/nueva
