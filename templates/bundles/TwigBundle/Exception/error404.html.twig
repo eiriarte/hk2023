@@ -1,13 +1,9 @@
 <!doctype html>
-{% set route_name = app.request.attributes.get('_route') %}
 {% set locale = app.request.getLocale() %}
 <html lang="{{ locale }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% if route_name == 'new_registration' %}
-        <meta name="robots" content="noindex">
-        {% endif %}
         <title>{% block title %}Hispana Kongreso 2023{% endblock %}</title>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -43,14 +39,23 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            {% include 'navbar.html.twig' %}
-        </header>
         <main class="pb-4">
-            <section class="py-5 container{{ route_name != 'main' ? ' bg-white' }}">
+            <section class="py-5 container">
                 <div class="row">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        {% block body %}{% endblock %}
+                        <div class="py-md-5 text-center text-white home-text">
+                            <h1>Página no encontrada</h1>
+                            <h2>Paĝo ne trovita</h2>
+                            <p class="lead">
+                                Lo sentimos, aquí no hay nada.
+                            </p>
+                            <p class="lead">
+                                Ni bedaŭras, ĉi tie estas nenio.
+                            </p>
+                            <p>
+                                <a href="/" class="btn btn-lg btn-outline-light my-2 me-2 shadow">Ir a portada / Iru hejmpaĝen</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>

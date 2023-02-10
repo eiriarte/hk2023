@@ -12,40 +12,42 @@
 </div>
 {% endfor %}
 <h1 class="fw-light text-center">{% trans %}Inscripciones{% endtrans %}</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">{% trans %}Nº{% endtrans %}</th>
-            <th scope="col">{% trans %}Nombre{% endtrans %}</th>
-            <th scope="col">{% trans %}Apellidos{% endtrans %}</th>
-            <th scope="col">{% trans %}Ciudad{% endtrans %}</th>
-            <th scope="col">{% trans %}País{% endtrans %}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for reg in registrations %}
-        {% if reg.public == 1 %}
-        <tr>
-            <th scope="row">{{ reg.id }}</td>
-            <td>{{ reg.name }}</td>
-            <td>{{ reg.surname }}</td>
-            <td>{{ reg.city }}</td>
-            <td>{{ reg.country|country_name }}</td>
-        </tr>
-        {% else %}
-            {% set fuera_de_lista = fuera_de_lista + 1 %}
-        {% endif %}
-    {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="5">
-                <span class="text-muted">
-                    <b>{% trans %}Total{% endtrans %}:</b> {{ total }} {% trans %}inscripciones{% endtrans %}
-                    {% if fuera_de_lista > 0 %}({{ fuera_de_lista }} {% trans %}fuera de lista{% endtrans %}){% endif %}
-                </span>
-            </td>
-        </tr>
-    </tfoot>
-</table>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">{% trans %}Nº{% endtrans %}</th>
+                <th scope="col">{% trans %}Nombre{% endtrans %}</th>
+                <th scope="col">{% trans %}Apellidos{% endtrans %}</th>
+                <th scope="col">{% trans %}Ciudad{% endtrans %}</th>
+                <th scope="col">{% trans %}País{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reg in registrations %}
+            {% if reg.public == 1 %}
+            <tr>
+                <th scope="row">{{ reg.id }}</td>
+                <td>{{ reg.name }}</td>
+                <td>{{ reg.surname }}</td>
+                <td>{{ reg.city }}</td>
+                <td>{{ reg.country|country_name }}</td>
+            </tr>
+            {% else %}
+                {% set fuera_de_lista = fuera_de_lista + 1 %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <span class="text-muted">
+                        <b>{% trans %}Total{% endtrans %}:</b> {{ total }} {% trans %}inscripciones{% endtrans %}
+                        {% if fuera_de_lista > 0 %}({{ fuera_de_lista }} {% trans %}fuera de lista{% endtrans %}){% endif %}
+                    </span>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 {% endblock %}
