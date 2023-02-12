@@ -47,9 +47,10 @@
                                         <th scope="col">{% trans %}Correo{% endtrans %}</th>
                                         <th scope="col">{% trans %}Ciudad{% endtrans %}</th>
                                         <th scope="col">{% trans %}País{% endtrans %}</th>
-                                        <th scope="col">{% trans %}Miembro{% endtrans %}</th>
+                                        <th scope="col">{% trans %}Socio{% endtrans %}</th>
                                         <th scope="col">{% trans %}Familiar{% endtrans %}</th>
                                         <th scope="col">{% trans %}Donación{% endtrans %}</th>
+                                        <th scope="col">{% trans %}M.R.{% endtrans %}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,6 +69,7 @@
                                         <td>{{ reg.member ? 'SÍ' }}</td>
                                         <td>{{ reg.relative ? 'SÍ' }}</td>
                                         <td>{{ reg.donation }}</td>
+                                        <td>{{ reg.reducedmobility ? 'SÍ' }}</td>
                                     </tr>
                                     {% if reg.paid %}
                                         {% set paid = paid + 1 %}

@@ -36,6 +36,7 @@ class RegistrationType extends AbstractType
             ->add('member', CheckboxType::class, [ 'required' => false ])
             ->add('relative', CheckboxType::class, [ 'required' => false ])
             ->add('donation', MoneyType::class, [ 'required' => false ])
+            ->add('reducedMobility', CheckboxType::class, [ 'required' => false ])
             ->add('public', CheckboxType::class, [ 'required' => false ])
             ->add('consent', CheckboxType::class, [ 'required' => true ])
             ->add('submit', SubmitType::class)

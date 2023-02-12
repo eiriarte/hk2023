@@ -67,6 +67,9 @@ class Registration
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+    #[ORM\Column]
+    private ?bool $reducedMobility = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -248,6 +251,18 @@ class Registration
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function isReducedMobility(): ?bool
+    {
+        return $this->reducedMobility;
+    }
+
+    public function setReducedMobility(bool $reducedMobility): self
+    {
+        $this->reducedMobility = $reducedMobility;
 
         return $this;
     }

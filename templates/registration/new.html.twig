@@ -62,6 +62,7 @@
         <div class="alert alert-warning"><strong>{% trans %}Nota{% endtrans %}</strong>: {% trans %}El próximo 1 de mayo, el precio base de la inscripción subirá a 80 €{% endtrans %}.</div>
         {% endif %}
         <hr class="my-4">
+        {{ form_row(form.reducedMobility, {'label': 'Adolezco de movilidad reducida.'|trans}) }}
         {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
         {{ form_widget(form.consent, {
              'label': 'Autorizo a la Asociación Sevillana de Esperanto el tratamiento de los datos contenidos en este formulario en los términos que se indican a continuación:'|trans,
