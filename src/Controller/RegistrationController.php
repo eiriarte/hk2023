@@ -95,14 +95,6 @@ class RegistrationController extends AbstractController
             $discountText = $translator->trans('familiar acompa&ntilde;ante');
         }
         $total = $price + $donation - $discount;
-        switch ($registration->getPaymentSystem()) {
-            case 'PPAL':
-                $paymentSystem = $translator->trans('V&iacute;a PayPal a kasisto@esperantosevilla.org<br/>(selecciona «Enviar a un amigo»)');
-                break;
-            default:
-                $paymentSystem = $translator->trans('Transferencia bancaria') . '<br/>(IBAN ES04 0182 0404 1402 0158 5771)';
-                break;
-        }
         $mail = (new TemplatedEmail())
             ->from(new Address(self::FROM_EMAIL, 'Sevila Kongresa Komitato'))
             ->to($registration->getEmail())
@@ -119,7 +111,6 @@ class RegistrationController extends AbstractController
                 'discountText' => $discountText,
                 'donation' => $donation,
                 'total' => $total,
-                'paymentSystem' => $paymentSystem,
                 'locale' => $locale,
             ]);
         $mail->getHeaders()->addTextHeader('X-Auto-Response-Suppress', 'OOF, DR, RN, NRN, AutoReply');

@@ -49,18 +49,14 @@
                     <div class="col-sm-12">
                         {{ form_row(form.donation, {'label': 'Donación al congreso (voluntaria)'|trans, 'label_attr': {'class': 'form-label'}}) }}
                     </div>
-                    <div class="col-sm-12">
-                        {{ form_row(form.paymentSystem, {'label': 'Medio de pago'|trans, 'attr': {'class': 'form-select'}, 'label_attr': {'class': 'form-label'}}) }}
-                    </div>
                 </div>
             </div>
             <div class="col-sm" id="price-table">
             </div>
         </div>
         <div class="alert alert-info">
-            <h4 class="alert-heading">{% trans %}Medios de pago{% endtrans %}</h4>
+            <h4 class="alert-heading">{% trans %}Medio de pago{% endtrans %}</h4>
             <strong>{% trans %}Transferencia{% endtrans %}</strong>: IBAN ES04 0182 0404 1402 0158 5771<br/>
-            <strong>Paypal</strong>: kasisto@esperantosevilla.org ({% trans %}Seleccionando «Enviar a un amigo»{% endtrans %})
         </div>
         {% if date() < date('2023-05-01') %}
         <div class="alert alert-warning"><strong>{% trans %}Nota{% endtrans %}</strong>: {% trans %}El próximo 1 de mayo, el precio base de la inscripción subirá a 80 €{% endtrans %}.</div>

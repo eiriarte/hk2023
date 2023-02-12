@@ -50,7 +50,6 @@
                                         <th scope="col">{% trans %}Miembro{% endtrans %}</th>
                                         <th scope="col">{% trans %}Familiar{% endtrans %}</th>
                                         <th scope="col">{% trans %}Donación{% endtrans %}</th>
-                                        <th scope="col">{% trans %}Sistema{% endtrans %}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +68,6 @@
                                         <td>{{ reg.member ? 'SÍ' }}</td>
                                         <td>{{ reg.relative ? 'SÍ' }}</td>
                                         <td>{{ reg.donation }}</td>
-                                        <td>{{ reg.paymentsystem }}</td>
                                     </tr>
                                     {% if reg.paid %}
                                         {% set paid = paid + 1 %}

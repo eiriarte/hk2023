@@ -54,10 +54,6 @@ class Registration
     #[ORM\Column(nullable: true)]
     private ?int $donation = null;
 
-    #[ORM\Column(length: 32)]
-    #[Assert\NotBlank(message: 'Selecciones un medio de pago en la lista desplegable.')]
-    private ?string $paymentSystem = null;
-
     #[ORM\Column]
     private ?bool $public = null;
 
@@ -204,18 +200,6 @@ class Registration
     public function setDonation(?int $donation): self
     {
         $this->donation = $donation;
-
-        return $this;
-    }
-
-    public function getPaymentSystem(): ?string
-    {
-        return $this->paymentSystem;
-    }
-
-    public function setPaymentSystem(string $paymentSystem): self
-    {
-        $this->paymentSystem = $paymentSystem;
 
         return $this;
     }
