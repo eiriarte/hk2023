@@ -42,6 +42,10 @@ class MainController extends AbstractController
                 ->subject('Hispana Esperanto-Kongreso: Sugerencia de ' . $suggestion->getName())
                 ->text($suggestion->getMessage());
 
+            $mail->getHeaders()->addTextHeader('X-Auto-Response-Suppress', 'OOF, DR, RN, NRN, AutoReply');
+
+            $mailer->send($mail);
+
             return $this->redirectToRoute('suggestion_sent', [], Response::HTTP_SEE_OTHER);
         }
 
