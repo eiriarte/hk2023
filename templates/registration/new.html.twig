@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <div class="form-check">
                                 <input type="checkbox" id="registration_member" name="registration[member]" class="form-check-input" value="1">
-                                <label class="form-check-label" for="registration_member">Miembro de
+                                <label class="form-check-label" for="registration_member">{% trans %}Miembro{% endtrans %} de
                                     <a href="#" class="link-secondary" style="cursor: default" data-bs-toggle="tooltip" data-bs-title="Hispana Esperanto-Federacio">HEF</a>,
                                     <a href="#" class="link-secondary" style="cursor: default" data-bs-toggle="tooltip" data-bs-title="Andaluzia Esperanto-Unuiĝo">AEU</a> o
                                     <a href="#" class="link-secondary" style="cursor: default" data-bs-toggle="tooltip" data-bs-title="Sevila Esperanto-Asocio">SEA</a>
@@ -49,13 +49,9 @@
                             </div>
                         </div>
                     </div>
+                    {% do form.member.setRendered() %}
                     <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="form-check"> <input type="checkbox" id="registration_relative" name="registration[relative]"
-                                    class="form-check-input" value="1">
-                                <label class="form-check-label" for="registration_relative">Familiar acompañante de miembro</label>
-                            </div>
-                        </div>
+                        {{ form_row(form.relative, {'label': 'Familiar acompañante de miembro'|trans}) }}
                     </div>
                     <div class="col-sm-12">
                         {{ form_row(form.age, {'label': 'Edad'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
