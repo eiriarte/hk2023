@@ -19,8 +19,8 @@ NIF/Pasaporte: Identiga karto aŭ pasporto
 Correo electrónico: Retpoŝta adreso
 Teléfono de contacto: Telefonnumero
 DNI/Pasaporte: Identiga carto
-Miembro de ASE/HEF: Membro de SEA/HEF
-Familiar de miembro de ASE/HEF: Familiano de membro de SEA/HEF
+Miembro de HEF/AEU/ASE: Membro de HEF/AEU/SEA
+Familiar de miembro de HEF/AEU/ASE: Familiano de membro de HEF/AEU/SEA
 Donación al congreso (voluntaria): Kongresa mondonaco (propra-vola)
 Medio de pago: Pagmaniero
 Transferencia bancaria: Banka transpago
@@ -38,11 +38,13 @@ Tu inscripción se ha registrado con éxito y te será confirmada por correo ele
   Via aliĝo estas registrita kaj konfirmota per retpoŝto tuj kiam ni ricevos la pagon.
 Para cualquier consulta, puedes escribirnos a %s.: Se vi havas ajnan dubon, vi povas skribi al ni al %s.
 Nota: Noto
-El próximo 1 de mayo, el precio base de la inscripción subirá a 80 €: La venonta 1-a de majo, la baza aliĝkotizo estos 80 eŭroj
+El 1 de mayo, el precio de la inscripción subirá a 80 €: La 1-a de majo, la aliĝkotizo plialtiĝos al 80 eŭroj
+El 1 de julio, subirá a 90 €: La 1-a de julio, ĝi plialtiĝos al 90 eŭroj
+El 1 de julio, el precio de la inscripción subirá a 90 €: La 1-a de julio, la aliĝkotizo plialtiĝos al 90 eŭroj
 Medios de pago: Pagmanieroj
 Transferencia: Transpago
 Seleccionando «Enviar a un amigo»: Bv. elekti "Sendi al amiko"
-Adolezco de movilidad reducida.: Mi suferas movkapablan handikapecon.
+Tengo movilidad reducida.: Mi havas movkapablan handikapecon.
 
 # Sugestoj
 
@@ -94,9 +96,11 @@ Un puente entre culturas: Ponto inter kulturoj
 # Retpoŝto
 hasta abril: 'ĝis aprilo'
 desde mayo: ekde majo
+desde julio: ekde julio
 miembro: membro
 joven: juna
 familiar acompa&ntilde;ante: akompananta familiano
+hasta 16 a&ntilde;os: ĝis 16 jaraĝa
 V&iacute;a PayPal a kasisto@esperantosevilla.org<br/>(selecciona «Enviar a un amigo»): Per PayPal al kasisto@esperantosevilla.org<br/>(elektu "Sendi al amiko")
 solicitud recibida: peto ricevita
 Gracias por tu inscripci&oacute;n: Dankon pro via aliĝo

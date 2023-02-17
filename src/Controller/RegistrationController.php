@@ -73,26 +73,33 @@ class RegistrationController extends AbstractController
         $donation = $registration->getDonation() ?? 0;
         $priceText = $translator->trans('hasta abril');
         $discountText = '';
-        if ((int)date('m') > 5) {
+        if ((int)date('m') >= 7) {
+            $price = 90;
+            $priceText = $translator->trans('desde julio');
+        } elseif ((int)date('m') >= 5) {
             $price = 80;
             $priceText = $translator->trans('desde mayo');
         }
         if ($registration->isMember()) {
             $discount = 10;
             $discountText = $translator->trans('miembro');
-            if ($registration->getAge() < 31) {
-                $discount = 20;
-                $discountText .= ' + ' . $translator->trans('joven');
-            } elseif ($registration->isRelative()) {
+            if ($registration->isRelative()) {
                 $discount = 20;
                 $discountText .= ' + ' . $translator->trans('familiar acompa&ntilde;ante');
             }
-        } elseif ($registration->getAge() < 31) {
-            $discount = 15;
-            $discountText = $translator->trans('joven');
         } elseif ($registration->isRelative()) {
             $discount = 15;
             $discountText = $translator->trans('familiar acompa&ntilde;ante');
+        }
+        if ($registration->getAge() < 17) {
+            $discount = $price;
+            $discountText = $translator->trans('hasta 16 a&ntilde;os');
+        } elseif ($registration->getAge() < 31) {
+            $discount += 15;
+            $discountText = $translator->trans('joven');
+        }
+        if (strlen($discountText) > 0) {
+            $discountText = '(' . $discountText . ')';
         }
         $total = $price + $donation - $discount;
         $mail = (new TemplatedEmail())

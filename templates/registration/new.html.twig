@@ -38,10 +38,24 @@
             <div class="col-sm">
                 <div class="row g-3 mb-3">
                     <div class="col-sm-12">
-                        {{ form_row(form.member, {'label': 'Miembro de ASE/HEF'|trans}) }}
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="registration_member" name="registration[member]" class="form-check-input" value="1">
+                                <label class="form-check-label" for="registration_member">Miembro de
+                                    <a href="#" class="link-secondary" style="cursor: default" data-bs-toggle="tooltip" data-bs-title="Hispana Esperanto-Federacio">HEF</a>,
+                                    <a href="#" class="link-secondary" style="cursor: default" data-bs-toggle="tooltip" data-bs-title="Andaluzia Esperanto-Unuiĝo">AEU</a> o
+                                    <a href="#" class="link-secondary" style="cursor: default" data-bs-toggle="tooltip" data-bs-title="Sevila Esperanto-Asocio">SEA</a>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-12">
-                        {{ form_row(form.relative, {'label': 'Familiar de miembro de ASE/HEF'|trans}) }}
+                        <div class="form-group">
+                            <div class="form-check"> <input type="checkbox" id="registration_relative" name="registration[relative]"
+                                    class="form-check-input" value="1">
+                                <label class="form-check-label" for="registration_relative">Familiar acompañante de miembro</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-12">
                         {{ form_row(form.age, {'label': 'Edad'|trans, 'attr': {'class': 'form-control'}, 'label_attr': {'class': 'form-label'}}) }}
@@ -59,10 +73,17 @@
             <strong>{% trans %}Transferencia{% endtrans %}</strong>: IBAN ES04 0182 0404 1402 0158 5771<br/>
         </div>
         {% if date() < date('2023-05-01') %}
-        <div class="alert alert-warning"><strong>{% trans %}Nota{% endtrans %}</strong>: {% trans %}El próximo 1 de mayo, el precio base de la inscripción subirá a 80 €{% endtrans %}.</div>
+        <div class="alert alert-warning">
+            <strong>{% trans %}Nota{% endtrans %}</strong>:
+            {% trans %}El 1 de mayo, el precio de la inscripción subirá a 80 €{% endtrans %}.
+            {% trans %}El 1 de julio, subirá a 90 €{% endtrans %}.
+        </div>
+        {% elseif date() < date('2023-07-01') %}
+            <strong>{% trans %}Nota{% endtrans %}</strong>:
+            {% trans %}El 1 de julio, el precio de la inscripción subirá a 90 €{% endtrans %}.
         {% endif %}
         <hr class="my-4">
-        {{ form_row(form.reducedMobility, {'label': 'Adolezco de movilidad reducida.'|trans}) }}
+        {{ form_row(form.reducedMobility, {'label': 'Tengo movilidad reducida.'|trans}) }}
         {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
         {{ form_widget(form.consent, {
              'label': 'Autorizo a la Asociación Sevillana de Esperanto el tratamiento de los datos contenidos en este formulario en los términos que se indican a continuación:'|trans,
@@ -110,24 +131,28 @@
             var priceTable = document.getElementById('price-table');
             var setPrice = function() {
                 var discount = 0;
+               {% if date() < date('2023-05-01') %}
+                var initialPrice = 70;
+               {% elseif date() < date('2023-07-01') %}
+                var initialPrice = 80;
+               {% else %}
+                var initialPrice = 90;
+               {% endif %}
                 if (isMember.checked) {
                     discount = 10;
-                    if (parseInt(age.value) < 31) {
-                        discount = 20;
-                    } else if (isRelative.checked) {
+                    if (isRelative.checked) {
                         discount = 20;
                     }
-                } else if (parseInt(age.value) < 31) {
-                    discount = 15;
                 } else if (isRelative.checked) {
                     discount = 15;
                 }
+                if (parseInt(age.value) < 17) {
+                    discount = initialPrice;
+                } else if (parseInt(age.value) < 31) {
+                    discount += 15;
+                }
                 var costData = {
-                  {% if date() < date('2023-05-01') %}
-                    initialPrice: 70,
-                  {% else %}
-                    initialPrice: 80,
-                  {% endif %}
+                    initialPrice: initialPrice,
                     discount: discount,
                     donation: Math.abs(parseInt(donation.value)) || 0,
                 };
@@ -150,6 +175,9 @@
             isRelative.addEventListener('change', setPrice);
             age.addEventListener('input', setPrice);
             donation.addEventListener('input', setPrice);
+
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         });
     </script>
 {% endblock %}
