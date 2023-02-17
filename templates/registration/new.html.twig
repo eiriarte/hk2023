@@ -80,7 +80,6 @@
         {% endif %}
         <hr class="my-4">
         {{ form_row(form.reducedMobility, {'label': 'Tengo movilidad reducida.'|trans}) }}
-        {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
         {{ form_widget(form.consent, {
              'label': 'Autorizo a la Asociación Sevillana de Esperanto el tratamiento de los datos contenidos en este formulario en los términos que se indican a continuación:'|trans,
              'label_attr': {'class': 'form-label'}
@@ -108,6 +107,7 @@
             </small>
             {% endif %}
         </p>
+        {{ form_row(form.public, {'label': 'Deseo aparecer en la lista pública de inscritos.'|trans, 'attr': {'checked': true}}) }}
         <hr class="my-4">
         {{ form_row(form.submit, { 'label': 'Enviar la suscripción'|trans, 'attr': {'class': 'btn-primary btn-lg w-100'} }) }}
     {{ form_end(form) }}
