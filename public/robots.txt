@@ -1,5 +1,10 @@
 User-agent: *
-Disallow:
+Disallow: /es/sugerencias
+Disallow: /eo/sugestoj
+Disallow: /es/inscripciones/nueva
+Disallow: /eo/alighoj/nova
+Disallow: /es/inscripciones
+Disallow: /eo/alighoj
 
 User-agent: noxtrumbot
 Crawl-delay: 20

@@ -52,16 +52,16 @@ suggestion_sent:
     controller: App\Controller\MainController::suggestionSent
     methods: GET
 
-program:
-    path:
-        es: /{_locale}/programa
-        eo: /{_locale}/programo
-    controller: App\Controller\MainController::program
-    methods: GET
+# program:
+#     path:
+#         es: /{_locale}/programa
+#         eo: /{_locale}/programo
+#     controller: App\Controller\MainController::program
+#     methods: GET
 
-accommodation:
-    path:
-        es: /{_locale}/hospedaje
-        eo: /{_locale}/loghado
-    controller: App\Controller\MainController::accommodation
-    methods: GET
+# accommodation:
+#     path:
+#         es: /{_locale}/hospedaje
+#         eo: /{_locale}/loghado
+#     controller: App\Controller\MainController::accommodation
+#     methods: GET

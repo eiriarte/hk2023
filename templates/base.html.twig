@@ -16,7 +16,6 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-            <link href="/styles/navbar-top-fixed.css" rel="stylesheet">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +30,8 @@
                     background-size: cover;
                 }
                 body {
+                    padding-top: 4.5rem;
+                    padding-bottom: 3rem;
                     background-color: transparent;
                 }
                 .home-text {
@@ -39,6 +40,11 @@
                 h1, h2, h3 {
                     font-family: 'Alegreya', serif;
                 }
+                @media (max-width: 576px) {
+                    .gmap {
+                        width: 100%;
+                    }
+                }
             </style>
         {% endblock %}
     </head>
@@ -46,14 +52,18 @@
         <header>
             {% include 'navbar.html.twig' %}
         </header>
-        <main class="pb-4">
-            <section class="py-5 container{{ route_name != 'main' ? ' bg-white' }}">
+        <main>
+            {% if route_name == 'main' %}
+                {% block main %}{% endblock %}
+            {% else %}
+            <section class="py-5 container bg-white">
                 <div class="row">
                     <div class="col-lg-6 col-md-8 mx-auto">
                         {% block body %}{% endblock %}
                     </div>
                 </div>
             </section>
+            {% endif %}
         </main>
         {% block footer %}
         <footer class="fixed-bottom bg-dark">

@@ -1,15 +1,90 @@
 {% extends 'base.html.twig' %}
-{% block body %}
-    <div class="py-md-5 text-center text-white home-text">
-        <img src="/images/logoHK_{{locale}}_BN.png" class="img-fluid" alt="{% trans %}Congreso español de esperanto{% endtrans %}. {% trans %}12-15 de octubre de 2023{% endtrans %}.">
-        <h1>{% trans %}Un puente entre culturas{% endtrans %}</h1>
-        <p class="lead">
-            {% trans %}Ven y conoce a esperantohablantes de diversos países y culturas.{% endtrans %}
-            {% trans %}Incríbete ya, con un descuento por incripción temprana hasta el 30 de abril de 2023.{% endtrans %}
-        </p>
-        <p>
-            <a href="{{ path('suggestions') }}" class="btn btn-lg btn-outline-light my-2 me-2 shadow">{% trans %}Sugerencias{% endtrans %}</a>
-            <a href="{{ path('new_registration') }}" class="btn btn-lg btn-primary my-2 shadow">{% trans %}Inscríbete{% endtrans %}</a>
-        </p>
-    </div>
+{% block main %}
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <div class="py-md-5 text-center text-white home-text">
+                    <img src="/images/logoHK_{{locale}}_BN.png" class="img-fluid" alt="{% trans %}Congreso español de esperanto{% endtrans %}. {% trans %}12-15 de octubre de 2023{% endtrans %}.">
+                    <h1>{% trans %}Un puente entre culturas{% endtrans %}</h1>
+                    <p class="lead">
+                        {% trans %}Ven y conoce a esperantohablantes de diversos países y culturas.{% endtrans %}
+                        {% trans %}Inscríbete ya, con el mayor descuento por inscripción temprana hasta el 30 de abril de 2023.{% endtrans %}
+                    </p>
+                    <p>
+                        <a href="{{ path('suggestions') }}" class="btn btn-lg btn-outline-light my-2 me-2 shadow">{% trans %}Sugerencias{% endtrans %}</a>
+                        <a href="{{ path('new_registration') }}" class="btn btn-lg btn-primary my-2 shadow">{% trans %}Inscríbete{% endtrans %}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white">
+        <div class="container py-4 py-md-5">
+            <div class="row">
+                <div class="col-sm col-sm ms-auto">
+                    <h2>{% trans %}«Kongresejo»{% endtrans %}</h2>
+                    <p>
+                        {% if locale == 'eo' %}
+                        La kongreso okaziĝos en la sidejo de UGT-Andaluzio, situanta en la strato Blas Infante.
+                        Tio estas facile atingebla kvartalo, buse aŭ metroe, plena je aktiveco kaj multe da proksimaj loĝejoj.
+                        {% else %}
+                        El congreso se celebrará en la sede de UGT-Andalucía, sito en la calle Blas Infante.
+                        Es una zona de fácil acceso en autobús y metro, llena de actividad y con una amplia oferta de
+                        alojamientos a poca distancia.
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if locale == 'eo' %}
+                        Kun la centrala temo <em>komprenemo inter popoloj</em>, krom variaj interesaj babiladoj kaj prelegoj,
+                        la kongreso ankaŭ ofertos buntajn kulturajn aktivaĵojn, kiel ekzkursojn, fulmokursojn, ludojn, ktp.
+                        {% else %}
+                        Con la temática <em>komprenemo inter popoloj</em> (afán de comprensión entre los pueblos) como eje vertebrador,
+                        además de gran variedad de interesantes charlas y conferencias, el congreso también ofertará diversas actividades
+                        culturales como excursiones, cursos intensivos de esperanto, juegos, etc.
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-sm col-sm me-auto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12682.358383360677!2d-6.0070244!3d37.3758867!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126c40df2791fb%3A0x3ca4f370923fcdbd!2sUGT%20Andaluc%C3%ADa!5e0!3m2!1ses!2ses!4v1676714486672!5m2!1ses!2ses" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="gmap"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-dark text-white">
+        <div class="container py-4 py-md-5">
+            <div class="row">
+                <div class="col-sm-4 ms-auto">
+                    <img class="img-fluid float-sm-end" src="/images/campus.jpg" alt="{% trans %}Fotografía aérea del campus Pirotecnia de Sevilla{% endtrans %}" width="400" height="400">
+                </div>
+                <div class="col-sm-8 py-4 py-md-0 me-auto">
+                    <h2>{% trans %}Precongreso universitario{% endtrans %}</h2>
+                    <p>
+                        {% if locale == 'eo' %}
+                        La du tagojn antaŭ la kongreso (10-a kaj 11-a de oktobro) okaziĝos universitata antaŭkongreso, al kiu ĉiu aliĝinto
+                        estas invitita. Ĝi okaziĝos en la Filologia kaj Psikologia Fakultatoj, kaj ĝuos la partoprenon de abunda internacia
+                        grupo de prelegantoj:
+                        {% else %}
+                        Los dos días previos al congreso (10 y 11 de octubre) tendrá lugar un precongreso universitario al que todos
+                        los inscritos están invitados. Se celebrará en las Facultades de Filología y Psicología, y contará con la
+                        participación de un nutrido panel internacional de ponentes:
+                        {% endif %}
+                    </p>
+                    <ul>
+                        <li>Bengt-Arne Wickström ({% trans %}Alemania{% endtrans %})</li>
+                        <li>Francesco Maurelli ({% trans %}Alemania{% endtrans %})</li>
+                        <li>Jorge Antonio Leoni de León ({% trans %}Costa Rica{% endtrans %})</li>
+                        <li>KIMURA Goro Christoph ({% trans %}Japón{% endtrans %})</li>
+                        <li>Keyhan Sayadpour ({% trans %}Irán{% endtrans %})</li>
+                        <li>Nina Daniljuk ({% trans %}Ucrania{% endtrans %})</li>
+                        <li>Philippe Planchon ({% trans %}Francia{% endtrans %})</li>
+                        <li>Renato Corsetti ({% trans %}Italia{% endtrans %})</li>
+                        <li>Vicente Manzano-Arrondo ({% trans %}España{% endtrans %})</li>
+                        <li>Zahra Karimi ({% trans %}Irán{% endtrans %})</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 {% endblock %}
