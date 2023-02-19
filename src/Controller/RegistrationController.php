@@ -37,7 +37,7 @@ class RegistrationController extends AbstractController
             $registrationRepository->add($registration, true);
 
             $successMessage = $translator->trans(
-                'Tu inscripción se ha registrado con éxito y te será confirmada por correo electrónico tan pronto recibamos el pago.'
+                'Tu inscripción se ha registrado con éxito y te será confirmada por correo electrónico tan pronto recibamos el pago (o en breve si, por edad, el importe total es 0 €).'
             );
             $successMessage .= ' ' .
                 sprintf($translator->trans('Para cualquier consulta, puedes escribirnos a %s.'), self::INFO_EMAIL);

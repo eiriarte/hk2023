@@ -24,6 +24,7 @@ Familiar de miembro de HEF/AEU/ASE: Familiano de membro de HEF/AEU/SEA
 Donación al congreso (voluntaria): Kongresa mondonaco (propra-vola)
 Medio de pago: Pagmaniero
 Transferencia bancaria: Banka transpago
+Transferencia bancaria a: Banka transpago al
 Elija una opción: Elektu listeron
 Subtotal: Komenca kvanto
 Miembro: Membro
@@ -34,8 +35,8 @@ Seleccione un país: Elektu landon
 Deseo aparecer en la lista pública de inscritos.: Mi deziras aperi en la publika listo de aliĝintoj.
 'Autorizo a la Asociación Sevillana de Esperanto el tratamiento de los datos contenidos en este formulario en los términos que se indican a continuación:':
   'Mi permesas al la Sevila Esperanto-Asocio la traktadon de la datumoj enhavataj en tiu ĉi formularo en la maniero indikata sube:'
-Tu inscripción se ha registrado con éxito y te será confirmada por correo electrónico tan pronto recibamos el pago.:
-  Via aliĝo estas registrita kaj konfirmota per retpoŝto tuj kiam ni ricevos la pagon.
+Tu inscripción se ha registrado con éxito y te será confirmada por correo electrónico tan pronto recibamos el pago (o en breve si, por edad, el importe total es 0 €).:
+  Via aliĝo estas registrita kaj konfirmota per retpoŝto tuj kiam ni ricevos la pagon (aŭ antaŭnelonge, se, pro via aĝo, la monsumo estas 0 €).
 Para cualquier consulta, puedes escribirnos a %s.: Se vi havas ajnan dubon, vi povas skribi al ni al %s.
 Nota: Noto
 El 1 de mayo, el precio de la inscripción subirá a 80 €: La 1-a de majo, la aliĝkotizo plialtiĝos al 80 eŭroj
@@ -43,6 +44,7 @@ El 1 de julio, subirá a 90 €: La 1-a de julio, ĝi plialtiĝos al 90 eŭroj
 El 1 de julio, el precio de la inscripción subirá a 90 €: La 1-a de julio, la aliĝkotizo plialtiĝos al 90 eŭroj
 Medios de pago: Pagmanieroj
 Transferencia: Transpago
+Transferencia a: Transpago al
 Seleccionando «Enviar a un amigo»: Bv. elekti "Sendi al amiko"
 Tengo movilidad reducida.: Mi havas movkapablan handikapecon.
 Familiar acompañante de miembro: Akompananta familiano de membro
@@ -121,6 +123,6 @@ Descuento: Rabato
 Donaci&oacute;n: Donaco
 Total a abonar: Pagenda monsumo
 Forma de pago: Pagmaniero
-Recibirás otro correo con la confirmaci&oacute;n de tu inscripci&oacute;n tan pronto recibamos el pago: Vi ricevos alian retpoŝtmesaĝon kun konfirmo pri via aliĝo tuj kiam ni ricevos via pago
+Recibirás otro correo con la confirmaci&oacute;n de tu inscripci&oacute;n tan pronto recibamos el pago (o en breve si, por edad, el importe total es 0 €): Vi ricevos alian retpoŝtmesaĝon kun konfirmo pri via aliĝo tuj kiam ni ricevos vian pagon (aŭ antaŭnelonge, se, pro via aĝo, la monsumo estas 0 €)
 Hasta pronto: 'Ĝis baldaŭ'
 Comité organizador: Loka Kongresa Komitato
