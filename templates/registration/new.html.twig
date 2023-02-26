@@ -156,6 +156,7 @@
                     costData.initialPrice +
                     costData.donation -
                     costData.discount;
+                window.totalaMonsumo = costData.finalPrice;
                 var table = templates["registration_price"].render(costData);
                 priceTable.innerHTML = table;
             }
@@ -166,6 +167,9 @@
                     isMember.checked = false;
                 }
             }
+            document.forms.registration.addEventListener('submit', (event) => {
+                gtag('event', 'registro', { importe: window.totalaMonsumo });
+            });
             setPrice();
             isMember.addEventListener('change', setPrice);
             isRelative.addEventListener('change', setPrice);
