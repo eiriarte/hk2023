@@ -16,6 +16,8 @@ main:
     path: /{_locale}
     controller: App\Controller\MainController::main
     methods: GET
+    requirements:
+        _locale: 'eo|es'
 
 registrations:
     path:
