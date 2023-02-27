@@ -1,33 +1,40 @@
 <!doctype html>
 {% set route_name = app.request.attributes.get('_route') %}
 {% set locale = app.request.getLocale() %}
+{% set ipAddr = app.request.server.get("REMOTE_ADDR") %}
 <html lang="{{ locale }}">
     <head>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFNDXD0NQ1"></script>
         <script>
-            function preniIdentigilon() {
-                var id = localStorage.getItem('gaIdentigilo');
-                if (!id) {
-                    id = crypto.randomUUID();
-                    localStorage.setItem('gaIdentigilo', id);
+            const cyrb53 = function (str, seed = 0) {
+                let h1 = 0xdeadbeef ^ seed,
+                    h2 = 0x41c6ce57 ^ seed;
+                for (let i = 0, ch; i < str.length; i++) {
+                    ch = str.charCodeAt(i);
+                    h1 = Math.imul(h1 ^ ch, 2654435761);
+                    h2 = Math.imul(h2 ^ ch, 1597334677);
                 }
+                h1 = Math.imul(h1 ^ h1 >>> 16, 2246822507) ^ Math.imul(h2 ^ h2 >>> 13, 3266489909);
+                h2 = Math.imul(h2 ^ h2 >>> 16, 2246822507) ^ Math.imul(h1 ^ h1 >>> 13, 3266489909);
+                return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+            };
+            let clientIDSource = "{{ ipAddr }}" + ";" + navigator.userAgent;
+            let clientIDHashed = cyrb53(clientIDSource).toString(16);
 
-                return id;
-            }
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
             gtag('consent', 'default', {
                 'ad_storage': 'denied',
                 'analytics_storage': 'denied'
             });
+            gtag('js', new Date());
             gtag(
                 'config',
                 'G-QFNDXD0NQ1',
                 {
                     'anonymize_ip': true,
-                    'client_id': preniIdentigilon()
+                    'client_id': clientIDHashed
                 }
             );
         </script>
