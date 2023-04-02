@@ -16,7 +16,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">{% trans %}Nº{% endtrans %}</th>
                 <th scope="col">{% trans %}Nombre{% endtrans %}</th>
                 <th scope="col">{% trans %}Apellidos{% endtrans %}</th>
                 <th scope="col">{% trans %}Ciudad{% endtrans %}</th>
@@ -27,7 +26,6 @@
         {% for reg in registrations %}
             {% if reg.public == 1 %}
             <tr>
-                <th scope="row">{{ reg.id }}</td>
                 <td>{{ reg.name }}</td>
                 <td>{{ reg.surname }}</td>
                 <td>{{ reg.city }}</td>
