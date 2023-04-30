@@ -69,8 +69,10 @@
             <strong>{% trans %}Transferencia a{% endtrans %} <em>Asociación Sevillana de Esperanto</em></strong>: IBAN ES04 0182 0404 1402 0158 5771<br/>
         </div>
         {% if date() < date('2023-07-01') %}
+        <div class="alert alert-warning">
             <strong>{% trans %}Nota{% endtrans %}</strong>:
             {% trans %}El 1 de julio, el precio de la inscripción subirá a 90 €{% endtrans %}.
+        </div>
         {% endif %}
         <hr class="my-4">
         {{ form_row(form.reducedMobility, {'label': 'Tengo movilidad reducida.'|trans}) }}
