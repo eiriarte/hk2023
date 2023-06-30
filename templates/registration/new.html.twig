@@ -68,12 +68,6 @@
             <h4 class="alert-heading">{% trans %}Medio de pago{% endtrans %}</h4>
             <strong>{% trans %}Transferencia a{% endtrans %} <em>Asociación Sevillana de Esperanto</em></strong>: IBAN ES04 0182 0404 1402 0158 5771<br/>
         </div>
-        {% if date() < date('2023-07-01') %}
-        <div class="alert alert-warning">
-            <strong>{% trans %}Nota{% endtrans %}</strong>:
-            {% trans %}El 1 de julio, el precio de la inscripción subirá a 90 €{% endtrans %}.
-        </div>
-        {% endif %}
         <hr class="my-4">
         {{ form_row(form.reducedMobility, {'label': 'Tengo movilidad reducida.'|trans}) }}
         {{ form_widget(form.consent, {
@@ -123,11 +117,7 @@
             var priceTable = document.getElementById('price-table');
             var setPrice = function() {
                 var discount = 0;
-               {% if date() < date('2023-07-01') %}
-                var initialPrice = 80;
-               {% else %}
                 var initialPrice = 90;
-               {% endif %}
                 if (isMember.checked) {
                     discount = 10;
                     if (isRelative.checked) {
