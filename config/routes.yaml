@@ -61,9 +61,9 @@ suggestion_sent:
 #     controller: App\Controller\MainController::program
 #     methods: GET
 
-# accommodation:
-#     path:
-#         es: /{_locale}/hospedaje
-#         eo: /{_locale}/loghado
-#     controller: App\Controller\MainController::accommodation
-#     methods: GET
+accommodation:
+    path:
+        es: /{_locale}/hospedaje
+        eo: /{_locale}/loghado
+    controller: App\Controller\MainController::accommodation
+    methods: GET

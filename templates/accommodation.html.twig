@@ -2,34 +2,118 @@
 {% block title %}{% trans %}Hospedaje{% endtrans %} | {{ parent() }}{% endblock %}
 {% block body %}
     <h1 class="fw-light text-center">{% trans %}Hospedaje{% endtrans %}</h1>
-    {% for accommodation in accommodations %}
-        <div class="card bg-light shadow mt-3 mt-md-5">
-            <div class="card-body">
-                <h5 class="card-title">{{ accommodation.name|trans }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ accommodation.address|trans }} ({{ accommodation.distance|trans }})</h6>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td><b>{% trans %}Número de habitaciones{% endtrans %}</b>: {{ accommodation.rooms|trans }}</td>
-                        </tr>
-                        <tr>
-                            <td><b>{% trans %}Precio{% endtrans %}</b>: {{ accommodation.price|trans }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="{{ accommodation.web }}" target="_blank" class="card-link link-primary text-decoration-none">
+    {% if locale == 'es' %}
+    <p>
+      El siguiente listado se basa en la selección de alojamientos de la <a href="https://visitasevilla.es/">Oficina de Turismo de Sevilla</a>. Hemos limitado la selección
+      a aquellos que se encuentran a menos de diez minutos a pie (~800 m) de alguna estación de metro.
+    </p>
+    {% else %}
+    <p>
+      La suba listo baziĝas sur la kribro de restadejoj fare de la <a href="https://visitasevilla.es/">Sevila Turisma Oficejo</a>. Ni limigis la liston al tiuj, kiuj
+      troviĝas malpli ol dek minutojn piede (~800 m) al iu metrostacio.
+    </p>
+    {% endif %}
+    <div class="row gy-2 mt-3">
+      <div class="col-xl-6">
+        <select id="filter-select" class="form-select form-control">
+          <option value="all">{% trans %}Selecciona el tipo de hospedaje{% endtrans %}</option>
+          <option value="hotel-5">{% trans %}Hotel{% endtrans %} 5 {% trans %}estrellas{% endtrans %}</option>
+          <option value="hotel-4">{% trans %}Hotel{% endtrans %} 4 {% trans %}estrellas{% endtrans %}</option>
+          <option value="hotel-3">{% trans %}Hotel{% endtrans %} 3 {% trans %}estrellas{% endtrans %}</option>
+          <option value="hotel-2">{% trans %}Hotel{% endtrans %} 2 {% trans %}estrellas{% endtrans %}</option>
+          <option value="hotel-1">{% trans %}Hotel{% endtrans %} 1 {% trans %}estrellas{% endtrans %}</option>
+          <option value="hostal-1">{% trans %}Hostal{% endtrans %} 1 {% trans %}estrellas{% endtrans %}</option>
+        </select>
+      </div>
+      <div class="col-xl-6">
+        <select id="order-select" class="form-select form-control">
+          <option value="congreso">{% trans %}Más cercanos al congreso{% endtrans %}</option>
+          <option value="metro">{% trans %}Más cercanos al metro{% endtrans %}</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-columns" id="card-container"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const cards = [
+          {% for acc in accommodations %}
+          { type: '{{ acc.type }}', name: '{{ acc.name }}', stars: {{ acc.stars }}, street: '{{ acc.street }}', number: {{ acc.houseNumber }}, station: '{{ acc.station }}', stDistance: {{ acc.stDistance }}, distance: {{ acc.distance }}, phone: '{{ acc.phone }}', web: '{{ acc.web }}', email: '{{ acc.email }}' },
+          {% endfor %}
+        ];
+      
+        function createCardHTML(card) {
+          const starColor = card.type === 'hotel' ? 'warning' : 'muted';
+          const stars = '✷'.repeat(card.stars);
+          const url = card.web.startsWith('http') ? card.web : 'https://' + card.web;
+          const emailDisplay = card.email ? 'inline-block' : 'none';
+          return `
+            <div class="card bg-light shadow mt-3 mt-md-5">
+              <h4 class="card-header">${card.name} &nbsp;<span class="text-${ starColor }">${ stars }</span></h4>
+              <div class="card-body">
+                <p class="card-text fs-5"><i class="bi bi-pin-map-fill"></i> &nbsp;${ card.street }, ${ card.number }</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>{% trans %}Distancia al congreso{% endtrans %}</strong>: ${ card.distance } m</li>
+                <li class="list-group-item"><strong>{% trans %}Estación de metro{% endtrans %}</strong>: ${ card.station } (${ card.stDistance } m)</li>
+              </ul>
+              <div class="card-body">
+                <a style="display: inline-block; max-width: 250px" href="${ url }" target="_blank" class="card-link link-primary text-decoration-none text-truncate">
                     <i class="bi bi-link-45deg"></i>
-                    {{ accommodation.web|trans }}
+                    ${ card.web }
                 </a>
-                <a href="tel:{{ accommodation.phone }}" class="link-primary card-link text-decoration-none">
+                <a style="display: inline-block" href="tel:${ '+34 ' + card.phone }" class="link-primary card-link text-decoration-none text-truncate">
                     <i class="bi bi-telephone-fill"></i>
-                    {{ accommodation.phone }}
+                    {% trans %}Teléfono{% endtrans %}
                 </a>
-                <a href="{{ accommodation.map }}" target="_blank" class="link-primary card-link text-decoration-none">
-                    <i class="bi bi-pin-map-fill"></i>
-                    {% trans %}Mapa{% endtrans %}
+                <a style="display: ${ emailDisplay }" href="mailto:${ card.email }" class="link-primary card-link text-decoration-none text-truncate">
+                    <i class="bi bi-envelope-fill"></i>
+                    {% trans %}Correo{% endtrans %}
                 </a>
+                <a style="display: inline-block" href="https://www.google.com/maps/dir/?api=1&origin=${ card.street }, ${ card.number } Sevilla&destination=37.37592174036871,-6.0070071659281705&travelmode=transit" target="_blank" class="link-primary card-link text-decoration-none text-truncate">
+                    <i class="bi bi-signpost-fill"></i>
+                    {% trans %}Trayecto{% endtrans %}
+                </a>
+              </div>
             </div>
-        </div>
-    {% endfor %}
+          `;
+        }
+      
+        function renderCards(filterValue, orderValue) {
+          const cardContainer = document.getElementById('card-container');
+          cardContainer.classList.add('fade-out');
+
+          setTimeout(function() {
+            cardContainer.innerHTML = '';
+
+            let filteredCards = cards;
+            if (filterValue !== 'all') {
+              filteredCards = cards.filter(card => card.type + '-' + card.stars === filterValue);
+            }
+            filteredCards.sort((a, b) => orderValue === 'congreso' ? a.distance - b.distance : a.stDistance - b.stDistance);
+            const cardsHTML = filteredCards.map(card => createCardHTML(card)).join('');
+            cardContainer.innerHTML = cardsHTML;
+
+            cardContainer.classList.remove('fade-out');
+          }, 400);
+        }
+      
+        const filterSelect = document.getElementById('filter-select');
+        const orderSelect = document.getElementById('order-select');
+        const doFilter = function() {
+          const filterValue = filterSelect.value;
+          const orderValue = orderSelect.value;
+          renderCards(filterValue, orderValue);
+        };
+        filterSelect.selectedIndex = 0;
+        orderSelect.selectedIndex = 0;
+        filterSelect.addEventListener('change', doFilter);
+        orderSelect.addEventListener('change', doFilter);
+      
+        renderCards('all', 'congreso');
+      });    
+    </script>
 {% endblock %}

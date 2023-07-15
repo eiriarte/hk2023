@@ -68,14 +68,19 @@ inscripciones: aliĝoj
 fuera de lista: eksterliste
 
 # Loĝado
-Hotel Cercano: Hotelo "Cercano"
-Calle Arriba, 15. Bajo izq.: Strato "Arriba", 15. 1-a etaĝo maldekstre.
-21 (dobles, triples o cuádruples): 21 (duoblaj, trioblaj aŭ kvaroblaj)
-Hotel Lejano: Hotelo "Lejano"
-Calle Abajo, 15. Bajo izq.: Strato "Abajo", 15. 1-a etaĝo maldekstre.
-32 dobles: 32 duoblaj
-Número de habitaciones: Nombro da ĉambroj
 Precio: Prezo
+Mapa: Mapo
+Trayecto: Itinero
+Distancia al congreso: Distanco al la kongresejo
+Estación de metro: Metrostacio
+Hotel: Hotelo
+Hostal: Gastejo
+estrellas: steloj
+Más cercanos al congreso: Pli proksimaj al kongresejo
+Más cercanos al metro: Pli proksimaj al metroo
+Selecciona el tipo de hospedaje: Elektu kategorion de loĝado
+Teléfono: Telefono
+Correo: Retpoŝto
 
 # Programo
 Hora: Horo
@@ -87,7 +92,6 @@ Inauguración: Inaŭguro
 Foto en común: Komuna fotado
 Clase de esperanto: Esperanto-klaso
 Concierto de JoMo: Koncerto de JoMo
-Hotel: Hotelo
 Facultad: Fakultato
 
 # Hejmpaĝo

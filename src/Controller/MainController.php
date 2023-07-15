@@ -12,6 +12,9 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Yaml\Yaml;
 
+use function file_get_contents;
+use function json_decode;
+
 class MainController extends AbstractController
 {
     private const FROM_EMAIL = 'admin@esperantosevilla.org';
@@ -69,8 +72,10 @@ class MainController extends AbstractController
 
     public function accommodation(): Response
     {
-        $data = Yaml::parseFile('../info/accommodation.yaml');
+        // $data = Yaml::parseFile('../info/accommodation.yaml');
+        $json = file_get_contents('../info/loghejoj.json');
+        $data = json_decode($json, true);
 
-        return $this->render('accommodation.html.twig', $data);
+        return $this->render('accommodation.html.twig', [ 'accommodations' => $data ]);
     }
 }
