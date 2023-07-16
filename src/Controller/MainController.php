@@ -72,7 +72,6 @@ class MainController extends AbstractController
 
     public function accommodation(): Response
     {
-        // $data = Yaml::parseFile('../info/accommodation.yaml');
         $json = file_get_contents('../info/loghejoj.json');
         $data = json_decode($json, true);
 

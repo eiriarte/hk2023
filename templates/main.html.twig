@@ -1,20 +1,23 @@
 {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.css">
+{% endblock %}
+
 {% block main %}
     <section class="container">
         <div class="row">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <div class="py-md-5 text-center text-white home-text">
                     <img src="/images/logoHK_{{locale}}_BN.png" class="img-fluid" alt="{% trans %}Congreso español de esperanto{% endtrans %}. {% trans %}12-15 de octubre de 2023{% endtrans %}.">
-                    <h1>{% trans %}Un puente entre culturas{% endtrans %}</h1>
-                    <p class="lead">
-                        {% trans %}Ven y conoce a esperantohablantes de diversos países y culturas.{% endtrans %}
-                    </p>
-                    <p class="lead">
-                        {% trans %}Ya tenemos un programa provisional, que iremos actualizando conforme se confirmen nuevas actividades y ponencias.{% endtrans %}
-                        <br /><strong><a class="link-light" href="/docs/Programo_20230622.pdf">{% trans %}DESCÁRGALO AQUÍ{% endtrans %}.</a></strong>
-                    </p>
-                    <p>
+                    <div id="flipdown" class="flipdown mx-auto"></div>
+                    <p class="mt-5">
                         <a href="{{ path('suggestions') }}" class="btn btn-lg btn-outline-light my-2 me-2 shadow">{% trans %}Sugerencias{% endtrans %}</a>
+                        <a href="/docs/Programo_20230622.pdf" class="btn btn-lg btn-outline-light my-2 me-2 shadow">
+                            <i class="bi bi-download"></i>
+                            {% trans %}Programa{% endtrans %}
+                        </a>
                         <a href="{{ path('new_registration') }}" class="btn btn-lg btn-primary my-2 shadow">{% trans %}Inscríbete{% endtrans %}</a>
                     </p>
                 </div>
@@ -25,25 +28,36 @@
         <div class="container py-4 py-md-5">
             <div class="row">
                 <div class="col-sm col-sm ms-auto">
-                    <h2>{% trans %}«Kongresejo»{% endtrans %}</h2>
+                    <h2>{% trans %}«Kongresejo» y hospedaje{% endtrans %}</h2>
                     <p>
                         {% if locale == 'eo' %}
-                        La kongreso okaziĝos en la sidejo de UGT-Andaluzio, situanta en la strato Blas Infante.
+                        La kongreso okaziĝos en la <strong>sidejo de UGT-Andaluzio</strong>, situanta en la strato <em>Blas Infante</em>.
                         Tio estas facile atingebla kvartalo, buse aŭ metroe, plena je aktiveco kaj multe da proksimaj loĝejoj.
                         {% else %}
-                        El congreso se celebrará en la sede de UGT-Andalucía, sito en la calle Blas Infante.
+                        El congreso se celebrará en la <strong>sede de UGT-Andalucía</strong>, sito en la calle Blas Infante.
                         Es una zona de fácil acceso en autobús y metro, llena de actividad y con una amplia oferta de
                         alojamientos a poca distancia.
                         {% endif %}
                     </p>
                     <p>
                         {% if locale == 'eo' %}
-                        Kun la centrala temo <em>komprenemo inter popoloj</em>, krom variaj interesaj babiladoj kaj prelegoj,
-                        la kongreso ankaŭ ofertos buntajn kulturajn aktivaĵojn, kiel ekzkursojn, fulmokursojn, ludojn, ktp.
+                        La sidejo de UGT-Andalucía troviĝas <strong>4 minutojn piede</strong> de la metrostacio <em>Parque de los Príncipes</em>.
+                        Sevilo disponas modernan <a href="https://www.metro-sevilla.es/">metroon</a>, adaptita por personoj kun movkapabla handikapo
+                        kaj alirebla sen bezono de bileto se oni havas kreditkarto aŭ debetkarto kun <a href="https://www.metro-sevilla.es/noticias/43"><em>EMV Contactless</em></a> teknologio.
+                        Pro tio, en la paĝo <a href="/eo/loghado">Loĝado</a> ni listas restadejojn proksimajn al metroo.
                         {% else %}
-                        Con la temática <em>komprenemo inter popoloj</em> (afán de comprensión entre los pueblos) como eje vertebrador,
-                        además de gran variedad de interesantes charlas y conferencias, el congreso también ofertará diversas actividades
-                        culturales como excursiones, cursos intensivos de esperanto, juegos, etc.
+                        La sede de UGT-Andalucía se encuentra a <strong>4 minutos a pie</strong> de la estación de metro «Parque de los Príncipes».
+                        Sevilla cuenta con una moderna <a href="https://www.metro-sevilla.es/">línea de metro</a>, adaptada a personas con movilidad reducida y accesible sin
+                        necesidad de billete si se dispone de tarjeta de crédito/débito con tecnología <a href="https://www.metro-sevilla.es/noticias/43"><em>EMV Contactless</em></a>.
+                        Por todo ello, en la sección <a href="/es/hospedaje">Hospedaje</a> ofrecemos una lista de alojamientos cercanos
+                        al metro.
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if locale == 'eo' %}
+                        Ni rekomendas vin rezervi restadejon kiel eble frue!
+                        {% else %}
+                        ¡Te recomendamos que reserves alojamiento con la máxima antelación!
                         {% endif %}
                     </p>
                 </div>
@@ -63,31 +77,85 @@
                     <h2>{% trans %}Precongreso universitario{% endtrans %}</h2>
                     <p>
                         {% if locale == 'eo' %}
-                        La du tagojn antaŭ la kongreso (10-a kaj 11-a de oktobro) okaziĝos universitata antaŭkongreso, al kiu ĉiu aliĝinto
-                        estas invitita. Ĝi okaziĝos en la Filologia kaj Psikologia Fakultatoj, kaj ĝuos la partoprenon de abunda internacia
+                        La du tagojn antaŭ la kongreso (10-a kaj 11-a de oktobro) okaziĝos universitata antaŭkongreso senpage alirebla,
+                        orginizata de <a href="https://civiencia.io">Civiencia</a>.
+                        Ĝi okaziĝos en la Filologia kaj Psikologia Fakultatoj, kaj ĝuos la partoprenon de abunda internacia
                         grupo de prelegantoj:
                         {% else %}
-                        Los dos días previos al congreso (10 y 11 de octubre) tendrá lugar un precongreso universitario al que todos
-                        los inscritos están invitados. Se celebrará en las Facultades de Filología y Psicología, y contará con la
+                        Los dos días previos al congreso (10 y 11 de octubre) tendrá lugar un precongreso universitario de asistencia
+                        gratuita, organizado por <a href="https://civiencia.io">Civiencia</a>. Se celebrará en las Facultades de Filología y Psicología, y contará con la
                         participación de un nutrido panel internacional de ponentes:
                         {% endif %}
                     </p>
                     <ul>
                         <li>Bengt-Arne Wickström ({% trans %}Alemania{% endtrans %})</li>
+                        <li>Daniel Cascado Caballero ({% trans %}España{% endtrans %})</li>
+                        <li>David Gálvez Ruiz ({% trans %}España{% endtrans %})</li>
                         <li>Francesco Maurelli ({% trans %}Alemania{% endtrans %})</li>
                         <li>Jorge Antonio Leoni de León ({% trans %}Costa Rica{% endtrans %})</li>
-                        <li>KIMURA Goro Christoph ({% trans %}Japón{% endtrans %})</li>
                         <li>Keyhan Sayadpour ({% trans %}Irán{% endtrans %})</li>
-                        <li>Nina Daniljuk ({% trans %}Ucrania{% endtrans %})</li>
+                        <li>Kimura Goro Christoph ({% trans %}Japón{% endtrans %})</li>
+                        <li>Nina Danylyuk ({% trans %}Ucrania{% endtrans %})</li>
                         <li>Philippe Planchon ({% trans %}Francia{% endtrans %})</li>
                         <li>Renato Corsetti ({% trans %}Italia{% endtrans %})</li>
-                        <li>Vicente Manzano-Arrondo ({% trans %}España{% endtrans %})</li>
+                        <li>Vicente Manzano-Arrondo, Viko ({% trans %}España{% endtrans %})</li>
                         <li>Zahra Karimi ({% trans %}Irán{% endtrans %})</li>
                     </ul>
+                    {% if locale == 'eo' %}
+                        <p>Legu pli <a href="https://kongreso.civiencia.io/SR2023/">en ties oficiala TTT-ejo</a>.</p>
+                    {% else %}
+                        <p>Más información <a href="https://kongreso.civiencia.io/SR2023/">en su web oficial</a>.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </section>
+    <section class="bg-white">
+        <div class="container py-4 py-md-5">
+            <div class="row">
+                <div class="col-sm col-sm ms-auto">
+                    <h2>{% trans %}Disfruta Sevilla{% endtrans %}</h2>
+                    {% if locale == 'eo' %}
+                    <p>Ni rekomendas vin la multlingvan TTT-ejon <a href="https://visitasevilla.es/">Visita Sevilla</a>,
+                        kie vi trovos valoran informon pri vojaĝpretado, vizitindaj lokoj, kuirarto, ktp.
+                        Vi ankaŭ povas elŝuti la subajn broŝurojn (bedaŭrinde nur haveblajn en la hispana):</p>
+                    <ul>
+                        <li><a href="/docs/Mapa de Sevilla.pdf">Interesa urbo-mapo</a>.</li>
+                        <li><a href="/docs/Moverse por Sevilla.pdf">Gvido por daŭripove trairi Sevilon</a>.</li>
+                        <li><a href="/docs/Monumentos de Sevilla.pdf">Monumentoj kaj interesaj lokoj</a>.</li>
+                        <li><a href="/docs/Gastronomia de Sevilla.pdf">Trinkejoj kaj restoracioj</a>.</li>
+                        <li><a href="/docs/Ruta por Triana.pdf">Itinero tra la kvartalo <em>Triana</em></a>.</li>
+                    </ul>
+                    {% else %}
+                    <p>Te recomendamos la web <a href="https://visitasevilla.es/">Visita Sevilla</a>, donde encontrarás valiosa información sobre
+                        cómo preparar tu viaje, qué lugares visitar, gastronomía y mucho más. También puedes descargar los siguientes
+                        folletos en PDF:</p>
+                    <ul>
+                        <li><a href="/docs/Mapa de Sevilla.pdf">Interesante mapa de la ciudad</a>.</li>
+                        <li><a href="/docs/Moverse por Sevilla.pdf">Guía para recorrer Sevilla de manera sostenible</a>.</li>
+                        <li><a href="/docs/Monumentos de Sevilla.pdf">Monumentos y lugares de interés</a>.</li>
+                        <li><a href="/docs/Gastronomia de Sevilla.pdf">Bares y restaurantes</a>.</li>
+                        <li><a href="/docs/Ruta por Triana.pdf">Ruta por Triana</a>.</li>
+                    </ul>
+                    {% endif %}
+
+                </div>
+                <div class="col-sm col-sm me-auto">
+                    <img class="img-fluid float-sm-end" src="/images/pza_espana.jpg" alt="{% trans %}Fotografía de la Plaza de España{% endtrans %}" width="533" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
 
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/src/flipdown.min.js"></script>
+    <script>
+        new FlipDown(1697101200, {
+            headings: ["{% trans %}Días{% endtrans %}", "{% trans %}Horas{% endtrans %}", "{% trans %}Minutos{% endtrans %}", "{% trans %}Segundos{% endtrans %}"],
+            theme: "light"
+          }).start();
+    </script>
 {% endblock %}
