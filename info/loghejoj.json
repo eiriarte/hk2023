@@ -596,5 +596,44 @@
         "phone": "954 636 864",
         "web": "www.hostalsanvicente.com",
         "email": "info@hostalsanvicentesevilla.com"
+    },
+    {
+        "type": "senluksa",
+        "stars": 0,
+        "name": "Albergue Triana",
+        "street": "Calle Rodrigo de Triana",
+        "houseNumber": 69,
+        "station": "Plaza de Cuba",
+        "stDistance": 550,
+        "distance": 1200,
+        "phone": "954 459 960",
+        "web": "www.trianahostel.com",
+        "email": "sevillatriana@gmail.com"
+    },
+    {
+        "type": "senluksa",
+        "stars": 0,
+        "name": "Hospedería Convento de Santa Rosalía",
+        "street": "Calle Cardenal Spínola",
+        "houseNumber": 8,
+        "station": "Puerta Jerez",
+        "stDistance": 1800,
+        "distance": 2900,
+        "phone": "954 383 209",
+        "web": "www.conventosdesevilla.com/convento-santa-rosalia/",
+        "email": "casadeoracion.capuchinas@gmail.com"
+    },
+    {
+        "type": "senluksa",
+        "stars": 0,
+        "name": "Albergue Inturjoven Sevilla",
+        "street": "Calle Isaac Peral",
+        "houseNumber": 2,
+        "station": "Puerta Jerez",
+        "stDistance": 2200,
+        "distance": 2900,
+        "phone": "955 181 181",
+        "web": "www.inturjoven.com/albergues/sevilla/albergue-inturjoven-sevilla?idAlbergue=WEBSEVILLA",
+        "email": "sevilla.itj@juntadeandalucia.es"
     }
 ]
