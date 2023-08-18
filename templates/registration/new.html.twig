@@ -66,7 +66,19 @@
         </div>
         <div class="alert alert-info">
             <h4 class="alert-heading">{% trans %}Medio de pago{% endtrans %}</h4>
-            <strong>{% trans %}Transferencia a{% endtrans %} <em>Asociación Sevillana de Esperanto</em></strong>: IBAN ES04 0182 0404 1402 0158 5771<br/>
+            <strong>{% trans %}Transferencia a{% endtrans %} <em>Asociación Sevillana de Esperanto</em></strong>:
+            <ul>
+                <li><strong>IBAN</strong>: ES04 0182 0404 1402 0158 5771</li>
+                <li><strong>SWIFT / BIC</strong>: BBVAESMM</li>
+            </ul>
+            <hr>
+            <h5 class="alert-heading">{% trans %}Paypal{% endtrans %}</h5>
+            {% trans %}Si lo prefieres, puedes enviarnos el pago vía Paypal a la siguiente cuenta{% endtrans %}
+            <ul>
+                <li>admin@esperantosevilla.org <small>({% trans %}por favor, indica "amigo o familiar"{% endtrans %})</small></li>
+            </ul>
+            <hr>
+            <p>⚠️ <small><strong>{% trans %}En cualquier caso, por favor indica tu nombre en el pago{% endtrans %}.</strong></small> ⚠️</p>
         </div>
         <hr class="my-4">
         {{ form_row(form.reducedMobility, {'label': 'Tengo movilidad reducida.'|trans}) }}
