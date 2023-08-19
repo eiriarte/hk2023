@@ -36,12 +36,24 @@ class RegistrationController extends AbstractController
             // TODO: registros al log (logentries??)
             $registrationRepository->add($registration, true);
 
-            $successMessage = $translator->trans(
+            $successMessage = '<h5>' . $translator->trans('¡Gracias!') . '</h5>';
+            $successMessage .= $translator->trans(
                 'Tu inscripción se ha registrado con éxito y te será confirmada por correo electrónico tan pronto recibamos el pago (o en breve si, por edad, el importe total es 0 €).'
             );
-            $successMessage .= ' ' .
-                sprintf($translator->trans('Para cualquier consulta, puedes escribirnos a %s.'), self::INFO_EMAIL);
+            $successMessage .= '<br>' . sprintf(
+                $translator->trans('Para cualquier consulta, puedes escribirnos a %s.'),
+                '<a href="mailto:' . self::INFO_EMAIL . '">' . self::INFO_EMAIL . '</a>'
+            );
+
+            $telegramMessage = '<h5><i class="bi bi-telegram"></i>&nbsp;' . $translator->trans('¡Ven a nuestro grupo de Telegram!') . '</h5>';
+            $telegramMessage .=
+                $translator->trans('Suscríbete a nuestro grupo Telegram para estar al día de las novedades acerca del congreso');
+            $telegramMessage .= ':<ul><li><a target="_blank" href="https://mallonge.net/hispanakongreso">https://mallonge.net/hispanakongreso</a></li></ul>';
+            $telegramMessage .= $translator->trans('¿Aún no tienes Telegram?') .
+                ' <a target="_blank" href="https://telegramo.org/el%C5%9Duti/">' . $translator->trans('Descárgalo aquí') . '</a>.';
+
             $this->addFlash('success', $successMessage);
+            $this->addFlash('success', $telegramMessage);
             $this->sendMail($mailer, $registration, $translator, $request->getLocale());
 
             return $this->redirectToRoute('registrations', [], Response::HTTP_SEE_OTHER);
