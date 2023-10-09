@@ -31,7 +31,7 @@ class SendController extends AbstractController
                     ->bcc(self::BCC_EMAIL)
                     ->replyTo(self::INFO_EMAIL)
                     ->priority(Email::PRIORITY_HIGH)
-                    ->subject('Hispana Esperanto-Kongreso: ')
+                    ->subject('Hispana Esperanto-Kongreso: via kongresnumero kaj pli')
                     ->htmlTemplate('email/last.twig')
                     ->context($person);
                 $mail->getHeaders()->addTextHeader('X-Auto-Response-Suppress', 'OOF, DR, RN, NRN, AutoReply');
