@@ -40,12 +40,12 @@ admin_send:
     controller: App\Controller\SendController::send
     methods: GET
 
-new_registration:
-    path:
-        es: /{_locale}/inscripciones/nueva
-        eo: /{_locale}/alighoj/nova
-    controller: App\Controller\RegistrationController::create
-    methods: GET|POST
+#new_registration:
+#    path:
+#        es: /{_locale}/inscripciones/nueva
+#        eo: /{_locale}/alighoj/nova
+#    controller: App\Controller\RegistrationController::create
+#    methods: GET|POST
 
 suggestions:
     path:

@@ -1,32 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.css">
-{% endblock %}
-
 {% block main %}
     <section class="container px-0">
         <div class="row">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <div class="py-sm-5 text-center text-white home-text">
                     <img src="/images/logoHK_{{locale}}_BN.png" class="img-fluid" alt="{% trans %}Congreso español de esperanto{% endtrans %}. {% trans %}12-15 de octubre de 2023{% endtrans %}.">
-                    <div id="flipdown" class="flipdown mx-auto"></div>
                     <p class="mt-5 d-none d-sm-block">
                         <a href="{{ path('suggestions') }}" class="btn btn-lg btn-outline-light my-2 me-2 shadow">{% trans %}Sugerencias{% endtrans %}</a>
-                        <a href="/docs/{% trans %}Programa{% endtrans %}_HEK_2023.pdf" class="btn btn-lg btn-outline-light my-2 me-2 shadow">
+                        <a href="/docs/{% trans %}Programa{% endtrans %}_HEK_2023.pdf" class="btn btn-lg btn-primary my-2 shadow">
                             <i class="bi bi-download"></i>
                             {% trans %}Programa{% endtrans %}
                         </a>
-                        <a href="{{ path('new_registration') }}" class="btn btn-lg btn-primary my-2 shadow">{% trans %}Inscríbete{% endtrans %}</a>
                     </p>
                     <p class="mt-3 d-block d-sm-none">
                         <a href="{{ path('suggestions') }}" class="btn btn-sm btn-outline-light my-2 me-2 shadow">{% trans %}Sugerencias{% endtrans %}</a>
-                        <a href="/docs/{% trans %}Programa{% endtrans %}_HEK_2023.pdf" class="btn btn-sm btn-outline-light my-2 me-2 shadow">
+                        <a href="/docs/{% trans %}Programa{% endtrans %}_HEK_2023.pdf" class="btn btn-sm btn-primary my-2 shadow">
                             <i class="bi bi-download"></i>
                             {% trans %}Programa{% endtrans %}
                         </a>
-                        <a href="{{ path('new_registration') }}" class="btn btn-sm btn-primary my-2 shadow">{% trans %}Inscríbete{% endtrans %}</a>
                     </p>
                 </div>
             </div>
@@ -157,16 +149,4 @@
             </div>
         </div>
     </section>
-{% endblock %}
-
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/src/flipdown.min.js"></script>
-    <script>
-        new FlipDown(1697101200, {
-            headings: ["{% trans %}Días{% endtrans %}", "{% trans %}Horas{% endtrans %}", "{% trans %}Minutos{% endtrans %}", "{% trans %}Segundos{% endtrans %}"],
-            theme: "light"
-          }).start();
-    </script>
 {% endblock %}
