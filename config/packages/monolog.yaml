@@ -57,8 +57,8 @@ when@prod:
                 handler: symfony_mailer
             symfony_mailer:
                 type:       symfony_mailer
-                from_email: 'admin@esperantosevilla.org'
-                to_email:   'eiriarte@gmail.com'
+                from_email: 'from_email@example.com'
+                to_email:   'to_email@example.com'
                 subject:    '¡Error en la web del congreso! %%message%%'
                 level:      debug
                 formatter:  monolog.formatter.html
