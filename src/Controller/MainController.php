@@ -17,8 +17,8 @@ use function json_decode;
 
 class MainController extends AbstractController
 {
-    private const FROM_EMAIL = 'admin@esperantosevilla.org';
-    private const INFO_EMAIL = 'kongreso@esperanto.es';
+    private const FROM_EMAIL = 'FROM_EMAIL@example.com';
+    private const INFO_EMAIL = 'INFO_EMAIL@example.com';
 
     public function main(): Response
     {
@@ -35,13 +35,12 @@ class MainController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO: registros al log (logentries??)
             $suggestionRepository->add($suggestion, true);
             $mail = (new Email())
                 ->from(self::FROM_EMAIL)
                 ->to(self::INFO_EMAIL)
                 ->replyTo($suggestion->getEmail())
-                ->bcc('eiriarte@gmail.com')
+                ->bcc('BCC@example.com')
                 ->subject('Hispana Esperanto-Kongreso: Sugerencia de ' . $suggestion->getName())
                 ->text($suggestion->getMessage());
 

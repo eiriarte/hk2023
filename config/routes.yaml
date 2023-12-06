@@ -33,13 +33,6 @@ admin_list:
     controller: App\Controller\RegistrationController::adminList
     methods: GET
 
-admin_send:
-    path:
-        es: /{_locale}/envios_874db5/{ids}
-        eo: /{_locale}/sendoj_83360f39874db57b33d4ad2cfe8a43f924e026e0cc09ae803ffd39df7e07d8c8/{ids}
-    controller: App\Controller\SendController::send
-    methods: GET
-
 new_registration:
     path:
         es: /{_locale}/inscripciones/nueva

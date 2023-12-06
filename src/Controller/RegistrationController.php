@@ -16,9 +16,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
-    private const FROM_EMAIL = 'info@esperantosevilla.org';
-    private const INFO_EMAIL = 'kongreso@esperanto.es';
-    private const BCC_EMAIL = 'eiriarte@gmail.com';
+    private const FROM_EMAIL = 'FROM_EMAIL@example.com';
+    private const INFO_EMAIL = 'INFO_EMAIL@example.com';
+    private const BCC_EMAIL = 'BCC_EMAIL@example.com';
 
     public function create(
         Request $request,
@@ -32,8 +32,6 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO: try-catch?
-            // TODO: registros al log (logentries??)
             $registrationRepository->add($registration, true);
 
             $successMessage = '<h5>' . $translator->trans('¡Gracias!') . '</h5>';
