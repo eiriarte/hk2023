@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Suggestion;
 use App\Form\SuggestionType;
 use App\Repository\SuggestionRepository;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\Yaml\Yaml;
 
 use function file_get_contents;
 use function json_decode;
@@ -25,6 +27,9 @@ class MainController extends AbstractController
         return $this->render('main.html.twig');
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     public function suggest(
         Request $request,
         SuggestionRepository $suggestionRepository,
@@ -39,7 +44,7 @@ class MainController extends AbstractController
             $mail = (new Email())
                 ->from(self::FROM_EMAIL)
                 ->to(self::INFO_EMAIL)
-                ->replyTo($suggestion->getEmail())
+                ->replyTo((string)$suggestion->getEmail())
                 ->bcc('BCC@example.com')
                 ->subject('Hispana Esperanto-Kongreso: Sugerencia de ' . $suggestion->getName())
                 ->text($suggestion->getMessage());
@@ -62,15 +67,9 @@ class MainController extends AbstractController
         return $this->render('suggestion_sent.html.twig');
     }
 
-    public function program(): Response
-    {
-        $data = Yaml::parseFile('../info/program.yaml');
-
-        return $this->render('program.html.twig', $data);
-    }
-
     public function accommodation(): Response
     {
+        /** @var string $json */
         $json = file_get_contents('../info/loghejoj.json');
         $data = json_decode($json, true);
 
